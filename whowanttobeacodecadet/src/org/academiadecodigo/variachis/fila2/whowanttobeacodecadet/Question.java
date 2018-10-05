@@ -29,7 +29,7 @@ public enum Question {
     GUSTAVO_NICKNAME("What's Gustavo's nickname?", new String[] {"Pirilampo mágico", "Zuca", "Lady baby"}),
     RAFAEL_WHO("Who was Rafael?", new String[] {"A pussy", "A philosopher", "A macho man"}),
     JOANA_AFRAID("What's Joana afraid of?", new String[] {"Midgets", "Clowns", "Code exercises"}),
-    JOANA_SNEEZE("How many times does Joana usually sneeze?", new String[] {"7 times", "5 times", "1 time"}),
+    JOANA_SNEEZE("How many times does Joana usually sneeze?", new String[] {"7 times", "5 times", "1 time"});
 
 
 
