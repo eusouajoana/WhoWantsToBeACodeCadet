@@ -1,44 +1,47 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Player {
 
-    //Properties
     private String name;
     private int score;
     private boolean winner;
     private boolean rightAnswer;
 
+
     //Constructor
-    public Player(String name){
+    public Player(String name) {
         this.name = name;
     }
 
-    //------------------ Methods ------------------------
 
-    //Method Answer
-    public void answer(Question question){
-
-        if(question.isCorrect){
-            score++;
-            this.rightAnswer = true;
-        }
-        System.out.println("Errouuuuuu!! Sifufu!");
-        this.rightAnswer = false;
-
+    public String getName() {
+        return name;
     }
 
-    //Method Win
-    public boolean isWinner(){
 
-        if (score == 10){
+    public boolean isRightAnswer() {
+        score++;
+        System.out.println(score);
+        return rightAnswer = true;
+    }
+
+
+    public String choose(List<String> answers) {
+        int indexAnswer = (int) (Math.random() * 3);
+        String answer = answers.get(indexAnswer);
+        System.out.println(name + " answer: " + answer);
+        return answer;
+    }
+
+
+    public boolean isWinner() {
+        if (score == 10) {
             return winner = true;
         }
         return false;
-    }
-
-    //Method isRight
-    public boolean isRightAnswer(){
-        return rightAnswer;
     }
 
 
