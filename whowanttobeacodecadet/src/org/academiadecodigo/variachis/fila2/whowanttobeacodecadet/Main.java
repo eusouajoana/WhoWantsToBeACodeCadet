@@ -12,8 +12,8 @@ public class Main {
 
         //Trivial Pursuit Board Logic
 
-       /* Board board = new Board();
+       Board board = new Board();
         board.position();
-        board.paths("1e1",2); */
+        board.paths("1e1",2);
     }
 }
