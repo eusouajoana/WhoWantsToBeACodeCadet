@@ -1,54 +1,56 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
+import java.util.List;
+
 public class Game {
 
-    //Properties
-
-    private Player [] players;
-    private Question question;
+    private Player[] players;
     private boolean winner = false;
 
-    //Constructor
-    public Game(){
 
+    //Constructor
+    public Game() {
         Player player1 = new Player("player1");
         Player player2 = new Player("player2");
-        this.players = new Player[] {player1,player2};
+        this.players = new Player[]{player1, player2};
     }
 
-    //------------- Methods ------------------------
 
-    //Method CheckWinner
-    public boolean checkWinner(){
+    public void start() {
 
-        return winner = true;
-    }
+        //Enquanto não houver um vencedor
+        while (!winner) {
+            //para cada player
+            for (Player player : players) {
+                //dar uma pergunta
+                Question question = Question.giveQuestion();
+                //player choose uma answer random
+                String answer = player.choose(question.getAnswers());
 
-    //Mehod Start
-    public void start(){
+                //enquanto a resposta for certa e não chegar a score 10
+                while (answer.equals(question.getRightAnswer()) && !player.isWinner()) {
+                    //aumentar o score
+                    player.isRightAnswer();
+                    //perguntar se score já é 10 (vencedor), se sim, sair do loop
+                    if (isWinner(player)) {
+                        break;
+                    }
 
-        //While do jogo
-        while(!winner){
-
-
-           //while repetição das respostas
-
-           for(Player player: players) {
-
-               while (player.isRightAnswer() && !player.isWinner()) {
-                   //******** Alternar entre os Players **********
-                   player.answer(question);
-               }
-
-               if(player.isWinner()) {
-                   this.winner = true;
-                   break;
-               }
-           }
-           
+                    //se não, nova pergunta e resposta
+                    question = Question.giveQuestion();
+                    answer = player.choose(question.getAnswers());
+                }
+            }
         }
+    }
 
 
+    public boolean isWinner(Player player) {
+        if (player.isWinner()) {
+            System.out.println(player.getName() + ": I'm the winner");
+            return this.winner = true;
+        }
+        return winner = false;
     }
 
 
