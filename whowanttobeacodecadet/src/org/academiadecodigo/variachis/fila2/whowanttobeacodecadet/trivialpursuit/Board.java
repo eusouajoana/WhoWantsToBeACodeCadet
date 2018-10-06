@@ -6,16 +6,15 @@ public class Board {
 
     //Properties
     private Map<String, Square> squareMap;
+    private Dice dice;
 
 
     // ------- Constructor -----------
 
     public Board() {
         this.squareMap = new HashMap<>();
+        this.dice = new Dice();
 
-        /*for (int i = 0; i < squares.length; i++) {
-            squares[i] = new Square(0, 0);
-        }*/
     }
 
     public void position() {
@@ -47,8 +46,6 @@ public class Board {
 
                     //putting square in the map
                     squareMap.put(key, square);
-                    System.out.println(key);
-                    //System.out.println(vector[0]+" "+vector[1]);
                     continue;
                 }
 
@@ -78,9 +75,7 @@ public class Board {
                 square.getNeighboursList().add(downNeighbour);
 
                 //putting square in the map
-                System.out.println(key);
                 squareMap.put(key, square);
-                //System.out.println(vector[0]+" "+vector[1]);
             }
 
         }
@@ -95,6 +90,10 @@ public class Board {
 
     public Set<String> paths(String actualposition, int dice) {
 
+        //Print Dice
+        System.out.println("*--------------- Board Tests --------------------*");
+        System.out.println("Dice Result : " + dice);
+
         //Set container to hold the final possibilities of positions
         Set<String> finalPositions = new HashSet<>();
 
@@ -105,7 +104,6 @@ public class Board {
 
         //setting initial neighbours list
         List<String> neighboursList = squareMap.get(position).getNeighboursList();
-        System.out.println("First Neighbour List : " + neighboursList);
 
         //big list of new neighbours
         Set<String> newNeighbours = new HashSet<>();
@@ -135,14 +133,11 @@ public class Board {
 
                 //see neighbours
                 position = neighbour;
-                System.out.println("Neighbours : " +  position);
                 // add position to final position
                 finalPositions.add(position);
-                System.out.println("***** final Possible Position :"+ finalPositions);
 
                 //add neighbours of neighbour to a big list of new neighbours
                 newNeighbours.addAll(squareMap.get(position).getNeighboursList());
-                System.out.println("--BIG list to be re-asked :" + newNeighbours);
 
                 //store the list of positions to pass as previous positions
                 listPreviousPositions.add(position);
@@ -156,10 +151,13 @@ public class Board {
         }
 
         finalPositions.remove(actualposition);
-        System.out.println("*-*-*-*-*- Final Positions " + finalPositions + "*-*-*-*-*-");
+        System.out.println("*-*-*-*-*- Final Possible Positions " + finalPositions + "*-*-*-*-*-");
 
         return finalPositions;
 
     }
 
+    public Dice getDice() {
+        return dice;
+    }
 }

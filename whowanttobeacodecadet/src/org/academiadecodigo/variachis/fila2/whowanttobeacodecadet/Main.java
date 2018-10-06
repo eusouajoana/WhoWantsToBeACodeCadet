@@ -14,6 +14,8 @@ public class Main {
 
        Board board = new Board();
         board.position();
-        board.paths("6e1",2);
+        int dice = board.getDice().rollDice();
+        board.paths("6e1",dice);
+
     }
 }
