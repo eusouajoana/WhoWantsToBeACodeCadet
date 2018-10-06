@@ -1,11 +1,18 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.MastersQuestions;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.CodeCadetsQuestions;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.ProgrammingConceptsQuestions;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.RandomQuestions;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
+
 import java.util.List;
 
 public class Game {
 
     private Player[] players;
-    private boolean winner = false;
+    private boolean gameWinner = false;
+    //private QuestionSelector questionSelector;
 
 
     //Constructor
@@ -13,31 +20,40 @@ public class Game {
         Player player1 = new Player("player1");
         Player player2 = new Player("player2");
         this.players = new Player[]{player1, player2};
+       // this.questionSelector = new QuestionSelector();
     }
 
 
     public void start() {
 
         //Enquanto não houver um vencedor
-        while (!winner) {
+        while (!gameWinner) {
             //para cada player
             for (Player player : players) {
-                //dar uma pergunta
-                Question question = Question.giveQuestion();
+
+                //escolher uma categoria random
+                QuestionSelector.Type category = QuestionSelector.randomCategory();
+
+                //dar uma pergunta random da categoria que saiu
+                String question = QuestionSelector.getRandomQuestion(category);
+
+
+
+               // QuestionSelector question  = QuestionSelector.giveQuestion();
                 //player choose uma answer random
                 String answer = player.choose(question.getAnswers());
 
                 //enquanto a resposta for certa e não chegar a score 10
-                while (answer.equals(question.getRightAnswer()) && !player.isWinner()) {
+                while (answer.equals(QuestionSelector.getRightAnswer()) && !player.isWinner()) {
                     //aumentar o score
                     player.isRightAnswer();
                     //perguntar se score já é 10 (vencedor), se sim, sair do loop
-                    if (isWinner(player)) {
+                    if (isGameWinner(player)) {
                         break;
                     }
 
                     //se não, nova pergunta e resposta
-                    question = Question.giveQuestion();
+                    question = QuestionSelector.getRandomQuestion().giveQuestion();
                     answer = player.choose(question.getAnswers());
                 }
             }
@@ -45,12 +61,12 @@ public class Game {
     }
 
 
-    public boolean isWinner(Player player) {
+    public boolean isGameWinner(Player player) {
         if (player.isWinner()) {
             System.out.println(player.getName() + ": I'm the winner");
-            return this.winner = true;
+            return this.gameWinner = true;
         }
-        return winner = false;
+        return gameWinner = false;
     }
 
 

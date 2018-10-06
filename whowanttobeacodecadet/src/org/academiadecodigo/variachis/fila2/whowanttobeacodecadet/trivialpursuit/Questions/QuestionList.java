@@ -1,4 +1,4 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
+package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions;
 
 import java.util.Iterator;
 
