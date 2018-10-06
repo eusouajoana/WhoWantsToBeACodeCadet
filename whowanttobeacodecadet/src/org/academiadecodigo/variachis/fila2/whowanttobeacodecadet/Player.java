@@ -1,7 +1,10 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Dice;
+
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Player {
 
@@ -9,11 +12,13 @@ public class Player {
     private int score;
     private boolean winner;
     private boolean rightAnswer;
+    private String actualposition;
 
 
     //Constructor
     public Player(String name) {
         this.name = name;
+        this.actualposition = "6e6";
     }
 
 
@@ -44,5 +49,33 @@ public class Player {
         return false;
     }
 
+    //Player can roll Dice to generate a random number [1 - 6]
+    public int rollDice(){
+        return Dice.rollDice();
+    }
 
+    //Player can choose his path according to the dice result
+    public void choosePath(Set<String> listOfPaths){
+
+        String choosedPosition = new String();
+
+        //choose randomly a new Position
+        int randomChoose = (int) (Math.random() * listOfPaths.size());
+        int count = 0;
+        for(String position : listOfPaths){
+
+            if(randomChoose == count){
+                choosedPosition = position;
+                break;
+            }
+
+                count++;
+        }
+
+        actualposition = choosedPosition;
+    }
+
+    public String getActualposition() {
+        return actualposition;
+    }
 }

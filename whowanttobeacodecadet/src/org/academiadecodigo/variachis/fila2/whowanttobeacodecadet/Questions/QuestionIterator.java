@@ -1,4 +1,4 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
+package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Questions;
 
 import java.util.Iterator;
 

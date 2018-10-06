@@ -1,18 +1,20 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
-import java.util.List;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Questions.Question;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 
 public class Game {
 
     private Player[] players;
     private boolean winner = false;
-
+    private Board board;
 
     //Constructor
     public Game() {
         Player player1 = new Player("player1");
         Player player2 = new Player("player2");
         this.players = new Player[]{player1, player2};
+        this.board = new Board();
     }
 
 
@@ -40,6 +42,10 @@ public class Game {
                     question = Question.giveQuestion();
                     answer = player.choose(question.getAnswers());
                 }
+                if (isWinner(player)) {
+                    System.out.println(player.getName() + ": I'm the winner");
+                    break;
+                }
             }
         }
     }
@@ -47,11 +53,19 @@ public class Game {
 
     public boolean isWinner(Player player) {
         if (player.isWinner()) {
-            System.out.println(player.getName() + ": I'm the winner");
+
             return this.winner = true;
         }
         return winner = false;
     }
 
 
+    // getters
+    public Board getBoard() {
+        return board;
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
 }

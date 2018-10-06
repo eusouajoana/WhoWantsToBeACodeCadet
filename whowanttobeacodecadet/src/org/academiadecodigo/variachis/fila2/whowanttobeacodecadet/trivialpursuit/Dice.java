@@ -2,7 +2,7 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursui
 
 public class Dice {
 
-    public int rollDice(){
+    public static int rollDice(){
 
         int result = (int) (Math.random() * 6) + 1;
 

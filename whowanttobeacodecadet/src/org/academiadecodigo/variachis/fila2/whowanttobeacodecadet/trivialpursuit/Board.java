@@ -14,7 +14,7 @@ public class Board {
     public Board() {
         this.squareMap = new HashMap<>();
         this.dice = new Dice();
-
+        this.position();
     }
 
     public void position() {
@@ -87,8 +87,10 @@ public class Board {
         return squareMap;
     }
 
+    //TODO resolver problema do neighbour List - por alguma razão, depois de fazer o clear(), ele não aceita receber mais valores!
+    //TODO se não fizer o clear, a list não se apaga, e acrescenta valores toda vez que invoco o método.
 
-    public Set<String> paths(String actualposition, int dice) {
+    public Set<String> paths(String actualPosition, int dice) {
 
         //Print Dice
         System.out.println("*--------------- Board Tests --------------------*");
@@ -96,20 +98,25 @@ public class Board {
 
         //Set container to hold the final possibilities of positions
         Set<String> finalPositions = new HashSet<>();
+        finalPositions.clear();
+        System.out.println("final positions initial : " + finalPositions);
 
         // setting initial position
-        String position = actualposition;
+        String position = actualPosition;
         System.out.println("Initial Position : " + position);
         String previousPosition = position;
 
         //setting initial neighbours list
         List<String> neighboursList = squareMap.get(position).getNeighboursList();
+        System.out.println("neighbour list initial: " + neighboursList);
 
         //big list of new neighbours
         Set<String> newNeighbours = new HashSet<>();
+        System.out.println("newNeighbour List initial : " + newNeighbours);
 
         //List of Previous positions
         Set<String> listPreviousPositions = new HashSet<>();
+        System.out.println("listPrevious positions initial : " +listPreviousPositions);
 
         //iterating according to dice result
         while (dice > 0){
@@ -150,8 +157,13 @@ public class Board {
             dice--;
         }
 
-        finalPositions.remove(actualposition);
+        finalPositions.remove(actualPosition);
         System.out.println("*-*-*-*-*- Final Possible Positions " + finalPositions + "*-*-*-*-*-");
+
+        neighboursList.clear();
+        newNeighbours.clear();
+        listPreviousPositions.clear();
+
 
         return finalPositions;
 
