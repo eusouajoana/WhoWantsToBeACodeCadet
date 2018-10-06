@@ -17,7 +17,7 @@ public class Main {
         board.position();
         board.paths("1e1",2); */
 
-       //Print <AC_> logo with SimpleGraphics
+        // Print <AC_> logo with SimpleGraphics
         Picture pic = new Picture(20, 100, "resources/img/ac_logo.png");
         pic.draw();
     }
