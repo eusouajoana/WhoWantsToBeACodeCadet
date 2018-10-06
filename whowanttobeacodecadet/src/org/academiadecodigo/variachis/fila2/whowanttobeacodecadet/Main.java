@@ -1,4 +1,5 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 
 public class Main {
 
@@ -7,5 +8,14 @@ public class Main {
         Game game = new Game();
 
         game.start();
+
+
+        //Trivial Pursuit Board Logic
+
+       Board board = new Board();
+        board.position();
+        int dice = board.getDice().rollDice();
+        board.paths("6e1",dice);
+
     }
 }
