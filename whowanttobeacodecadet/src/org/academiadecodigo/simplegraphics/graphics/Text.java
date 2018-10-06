@@ -1,10 +1,11 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics;
+package org.academiadecodigo.simplegraphics.graphics;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.color.*;
 
 public class Text implements Shape, Colorable, Movable {
-    private org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Color color = org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Color.BLACK;
+    private Color color = Color.BLACK;
     private JLabel label = new JLabel();
     private double x;
 
@@ -72,7 +73,7 @@ public class Text implements Shape, Colorable, Movable {
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
@@ -84,7 +85,7 @@ public class Text implements Shape, Colorable, Movable {
     public void grow(double dw, double dh) {
         xGrow += dw;
         yGrow += dh;
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
@@ -92,9 +93,9 @@ public class Text implements Shape, Colorable, Movable {
      *
      * @param newColor the new color
      */
-    public void setColor(org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Color newColor) {
+    public void setColor(Color newColor) {
         color = newColor;
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
@@ -103,14 +104,14 @@ public class Text implements Shape, Colorable, Movable {
      */
     public void setText(String message) {
         label.setText(message);
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
      * Shows this text on the canvas.
      */
     public void draw() {
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().show(this);
+        Canvas.getInstance().show(this);
     }
 
     /**
@@ -126,7 +127,7 @@ public class Text implements Shape, Colorable, Movable {
 
     public void paintShape(Graphics2D g2) {
         if (color != null) {
-            label.setForeground(new org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
+            label.setForeground(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
             Dimension dim = label.getPreferredSize();
             if (dim.width > 0 && dim.height > 0) {
                 label.setBounds(0, 0, dim.width, dim.height);

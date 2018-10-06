@@ -1,4 +1,4 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics;
+package org.academiadecodigo.simplegraphics.graphics;
 
 import java.awt.*;
 

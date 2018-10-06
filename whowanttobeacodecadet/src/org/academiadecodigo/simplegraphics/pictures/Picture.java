@@ -1,4 +1,4 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.pictures;
+package org.academiadecodigo.simplegraphics.pictures;
 
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -8,7 +8,6 @@ import org.academiadecodigo.simplegraphics.graphics.Shape;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
@@ -197,7 +196,7 @@ public class Picture implements Shape, Movable {
      * @param i the pixel index
      * @return the color at pixel i
      */
-    public org.academiadecodigo.simplegraphics.graphics.Color getColorAt(int i) {
+    public Color getColorAt(int i) {
         if (image == null || i < 0 || i >= pixels()) {
             throw new IndexOutOfBoundsException("" + i);
         } else {
@@ -211,7 +210,7 @@ public class Picture implements Shape, Movable {
      * @param i     the pixel index
      * @param color the new color for the pixel
      */
-    public void setColorAt(int i, org.academiadecodigo.simplegraphics.graphics.Color color) {
+    public void setColorAt(int i, Color color) {
         if (image == null || i < 0 || i >= pixels()) {
             throw new IndexOutOfBoundsException("" + i);
         } else {
@@ -225,12 +224,12 @@ public class Picture implements Shape, Movable {
      * @param x the x-coordinate (column) of the pixel
      * @param y the y-coordinate (row) of the pixel
      */
-    public org.academiadecodigo.simplegraphics.graphics.Color getColorAt(int x, int y) {
+    public Color getColorAt(int x, int y) {
         if (image == null || x < 0 || x >= image.getWidth() || y < 0 || y >= image.getHeight()) {
             throw new IndexOutOfBoundsException("(" + x + "," + y + ")");
         } else {
             int rgb = image.getRGB(x, y) & 0xFFFFFF;
-            return new org.academiadecodigo.simplegraphics.graphics.Color(rgb / 65536, (rgb / 256) % 256, rgb % 256);
+            return new Color(rgb / 65536, (rgb / 256) % 256, rgb % 256);
         }
     }
 
@@ -246,7 +245,7 @@ public class Picture implements Shape, Movable {
             throw new IndexOutOfBoundsException("(" + x + "," + y + ")");
         } else {
             image.setRGB(x, y, ((int) color.getRed()) * 65536 + ((int) color.getGreen()) * 256 + (int) color.getBlue());
-            org.academiadecodigo.simplegraphics.graphics.Canvas.getInstance().repaint();
+            Canvas.getInstance().repaint();
         }
     }
 
@@ -259,7 +258,7 @@ public class Picture implements Shape, Movable {
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
-        org.academiadecodigo.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
@@ -271,21 +270,21 @@ public class Picture implements Shape, Movable {
     public void grow(double dw, double dh) {
         xGrow += dw;
         yGrow += dh;
-        org.academiadecodigo.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
      * Shows this picture on the canvas.
      */
     public void draw() {
-        org.academiadecodigo.simplegraphics.graphics.Canvas.getInstance().show(this);
+        Canvas.getInstance().show(this);
     }
 
     /**
      * Deletes this picture from the canvas.
      */
     public void delete() {
-        org.academiadecodigo.simplegraphics.graphics.Canvas.getInstance().hide(this);
+        Canvas.getInstance().hide(this);
     }
 
     /**

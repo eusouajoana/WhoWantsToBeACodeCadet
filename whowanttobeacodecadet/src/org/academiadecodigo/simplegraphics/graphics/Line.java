@@ -1,10 +1,10 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics;
+package org.academiadecodigo.simplegraphics.graphics;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
 
 public class Line implements Shape, Colorable, Movable {
-    private org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Color color = org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Color.BLACK;
+    private Color color = Color.BLACK;
     private double x1;
     private double y1;
     private double x2;
@@ -77,7 +77,7 @@ public class Line implements Shape, Colorable, Movable {
         y1 += dy;
         x2 += dx;
         y2 += dy;
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
@@ -103,7 +103,7 @@ public class Line implements Shape, Colorable, Movable {
             y2 -= dh;
         }
 
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
@@ -112,9 +112,9 @@ public class Line implements Shape, Colorable, Movable {
      * @param newColor the new color
      */
     @Override
-    public void setColor(org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Color newColor) {
+    public void setColor(Color newColor) {
         color = newColor;
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
@@ -122,7 +122,7 @@ public class Line implements Shape, Colorable, Movable {
      * @return the line color
      */
     @Override
-    public org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Color getColor() {
+    public Color getColor() {
         return color;
     }
 
@@ -131,7 +131,7 @@ public class Line implements Shape, Colorable, Movable {
      */
     @Override
     public void draw() {
-        org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.Canvas.getInstance().show(this);
+        Canvas.getInstance().show(this);
     }
 
     /**
@@ -145,7 +145,7 @@ public class Line implements Shape, Colorable, Movable {
     @Override
     public void paintShape(Graphics2D g2) {
         if (color != null) {
-            g2.setColor(new Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
+            g2.setColor(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
             Line2D.Double line = new Line2D.Double(x1, y1, x2, y2);
             g2.draw(line);
         }

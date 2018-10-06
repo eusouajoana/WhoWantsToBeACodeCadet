@@ -1,13 +1,10 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics;
+package org.academiadecodigo.simplegraphics.graphics;
 
 import java.awt.*;
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Shape;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.Ellipse2D;
 
-public class Rectangle implements Shape, Colorable, Fillable, Movable {
-    private java.awt.Color color = java.awt.Color.BLACK;
+public class Ellipse implements Shape, Colorable, Fillable, Movable {
+    private Color color = Color.BLACK;
     private boolean filled = false;
     private double x;
     private double y;
@@ -15,24 +12,14 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     private double height;
 
     /**
-     * Constructs an empty rectangle.
-     */
-    public Rectangle() {
-        x = 0;
-        y = 0;
-        width = 0;
-        height = 0;
-    }
-
-    /**
-     * Constructs a rectangle.
+     * Constructs an ellipse.
      *
      * @param x      the leftmost x-coordinate
      * @param y      the topmost y-coordinate
-     * @param width  the width
-     * @param height the height
+     * @param width  the width of the bounding box
+     * @param height the height of the bounding box
      */
-    public Rectangle(double x, double y, double width, double height) {
+    public Ellipse(double x, double y, double width, double height) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -40,7 +27,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     }
 
     /**
-     * Gets the leftmost x-position of this rectangle.
+     * Gets the leftmost x-position of this ellipse.
      *
      * @return the leftmost x-position
      */
@@ -50,7 +37,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     }
 
     /**
-     * Gets the topmost y-position of this rectangle.
+     * Gets the topmost y-position of this ellipse.
      *
      * @return the topmost y-position
      */
@@ -59,8 +46,9 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
         return (int) Math.round(y);
     }
 
+
     /**
-     * Gets the width of this rectangle.
+     * Gets the width of the bounding box.
      *
      * @return the width
      */
@@ -70,7 +58,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     }
 
     /**
-     * Gets the height of this rectangle.
+     * Gets the height of the bounding box.
      *
      * @return the height
      */
@@ -80,7 +68,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     }
 
     /**
-     * Moves this rectangle by a given amount.
+     * Moves this ellipse by a given amount.
      *
      * @param dx the amount by which to move in x-direction
      * @param dy the amount by which to move in y-direction
@@ -89,11 +77,11 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
-        java.awt.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
-     * Resizes this rectangle both horizontally and vertically.
+     * Resizes this ellipse both horizontally and vertically.
      *
      * @param dw the amount by which to resize the width on each side
      * @param dw the amount by which to resize the height on each side
@@ -104,49 +92,49 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
         height += 2 * dh;
         x -= dw;
         y -= dh;
-        java.awt.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
-     * Gets the color of this rectangle.
+     * Gets the color of this ellipse
      *
-     * @return the rectangle color
+     * @return the ellipse color
      */
     @Override
-    public java.awt.Color getColor() {
+    public Color getColor() {
         return color;
     }
 
     /**
-     * Sets the color of this rectangle.
+     * Sets the color of this ellipse.
      *
      * @param newColor the new color
      */
     @Override
     public void setColor(Color newColor) {
         color = newColor;
-        java.awt.Canvas.getInstance().repaint();
+        Canvas.getInstance().repaint();
     }
 
     /**
-     * Draws this rectangle.
+     * Draws this ellipse on the canvas.
      */
     @Override
     public void draw() {
         filled = false;
-        java.awt.Canvas.getInstance().show(this);
+        Canvas.getInstance().show(this);
     }
 
     /**
-     * Deletes this rectangle
+     * Deletes this ellipse from the canvas
      */
     @Override
     public void delete() {
-        java.awt.Canvas.getInstance().hide(this);
+        Canvas.getInstance().hide(this);
     }
 
     /**
-     * Fills this rectangle.
+     * Fills this ellipse.
      */
     @Override
     public void fill() {
@@ -155,8 +143,8 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     }
 
     /**
-     * Gets if this rectangle is filled
-     * @return true if is filled
+     * Gets if this ellipse is filled
+     * @return true if the ellipse is filled
      */
     @Override
     public boolean isFilled() {
@@ -165,15 +153,12 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
 
     @Override
     public void paintShape(Graphics2D g2) {
-        Rectangle2D.Double rect = new Rectangle2D.Double(getX(), getY(), getWidth(), getHeight());
-        g2.setColor(new Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
-
+        Ellipse2D.Double ellipse = new Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
+        g2.setColor(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
         if (filled) {
-
-            g2.fill(rect);
-
+            g2.fill(ellipse);
         } else {
-            g2.draw(rect);
+            g2.draw(ellipse);
         }
     }
 

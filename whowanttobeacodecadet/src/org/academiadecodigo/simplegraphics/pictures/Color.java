@@ -1,4 +1,4 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.pictures;
+package org.academiadecodigo.simplegraphics.pictures;
 
 public class Color
 {

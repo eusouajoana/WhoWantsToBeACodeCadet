@@ -1,15 +1,15 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.test;
+package org.academiadecodigo.simplegraphics.test;
 
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics.*;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.mouse.Mouse;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.mouse.MouseEvent;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.mouse.MouseEventType;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.mouse.MouseHandler;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.pictures.Picture;
+import org.academiadecodigo.simplegraphics.graphics.*;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.mouse.Mouse;
+import org.academiadecodigo.simplegraphics.mouse.MouseEvent;
+import org.academiadecodigo.simplegraphics.mouse.MouseEventType;
+import org.academiadecodigo.simplegraphics.mouse.MouseHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Tester implements KeyboardHandler, MouseHandler {
 

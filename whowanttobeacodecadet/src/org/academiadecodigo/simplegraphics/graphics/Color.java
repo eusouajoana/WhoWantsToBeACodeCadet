@@ -1,7 +1,6 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.graphics;
+package org.academiadecodigo.simplegraphics.graphics;
 
-public class Color
-{
+public class Color {
     private int red;
     private int green;
     private int blue;
@@ -21,18 +20,18 @@ public class Color
     public static final Color YELLOW = new Color(255, 255, 0);
     public static final Color PINK = new Color(255, 175, 175);
     public static final Color ORANGE = new Color(255, 200, 0);
-    
+
     /**
      * Constructs a new Color object.
-     * @param red the red value of the color (between 0 and 255)
-     * @param green the green value of the color (between 0 and 255)
-     * @param blue the blue value of the color (between 0 and 255)
+     * @param var1 the red value of the color (between 0 and 255)
+     * @param var2 the green value of the color (between 0 and 255)
+     * @param var3 the blue value of the color (between 0 and 255)
      */
-    public Color(int red, int green, int blue)
+    public Color(int var1, int var2, int var3)
     {
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
+        this.red = var1;
+        this.green = var2;
+        this.blue = var3;
     }
 
     /**

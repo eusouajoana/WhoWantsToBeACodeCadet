@@ -1,4 +1,4 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.keyboard;
+package org.academiadecodigo.simplegraphics.keyboard;
 
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 

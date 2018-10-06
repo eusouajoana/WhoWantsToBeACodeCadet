@@ -1,4 +1,4 @@
-package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.simplegraphics.mouse;
+package org.academiadecodigo.simplegraphics.mouse;
 
 /**
  * The type of events supported by the Mouse
