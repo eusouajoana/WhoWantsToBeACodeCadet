@@ -1,4 +1,6 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 
@@ -20,5 +22,6 @@ public class Main {
         // Print <AC_> logo with SimpleGraphics
         Picture pic = new Picture(20, 100, "resources/img/ac_logo.png");
         pic.draw();
+
     }
 }

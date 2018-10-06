@@ -1,5 +1,8 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
+
 import java.util.List;
 
 public class Game {
@@ -48,6 +51,9 @@ public class Game {
     public boolean isWinner(Player player) {
         if (player.isWinner()) {
             System.out.println(player.getName() + ": I'm the winner");
+            Text text = new Text(20, 30.4D, player.getName() + ": I'm the winner");
+            text.setColor(Color.BLACK);
+            text.draw();
             return this.winner = true;
         }
         return winner = false;

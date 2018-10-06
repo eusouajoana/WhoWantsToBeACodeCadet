@@ -10,7 +10,7 @@ public class SimpleGfxGrid implements Grid{
     private int cols;
     private int rows;
     public static final int PADDING = 10;
-    public static final int CELLSIZE = 25;
+    public static final int CELLSIZE = 24;
     private Rectangle grid;
     private Picture picture;
 
@@ -18,7 +18,7 @@ public class SimpleGfxGrid implements Grid{
 
         this.cols = var1;
         this.rows = var2;
-        this.grid = new Rectangle(10, 10, (double)(var1 * 25), (double)(var2 * 25));
+        this.grid = new Rectangle(10, 10, (double)(var1 * 24), (double)(var2 * 24));
         this.picture = new Picture(0, 0, "resources/img/ac_logo.png");
         this.init();
     }
