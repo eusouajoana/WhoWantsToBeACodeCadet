@@ -1,9 +1,6 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Board {
 
@@ -31,19 +28,11 @@ public class Board {
                 //completed rows
                 if (i == 1 || i == 6 || i == 11) {
 
-                    //identifying the position of the square
-                    int[] vector = {i, j};
-                    //teste key
+                    //identifying position of the square in a key
                     String key = i + "e" + j;
 
                     //instantiate a square
                     Square square = new Square();
-
-                    //identifying square neighbours
-                    //int[] leftNeighbour = {i,j-1};
-                    //int[] uptNeighbour = {i-1,j};
-                    //int[] rightNeighbour = {i,j+1};
-                    //int[] downNeighbour = {i+1,j};
 
                     String leftNeighbour = i + "e" + (j - 1);
                     String upNeighbour = (i - 1) + "e" + j;
@@ -76,12 +65,6 @@ public class Board {
                 //instantiate a square
                 Square square = new Square();
 
-                //identifying square neighbours
-                //int[] leftNeighbour = {i,j-1};
-                //int[] uptNeighbour = {i-1,j};
-                //int[] rightNeighbour = {i,j+1};
-                //int[] downNeighbour = {i+1,j};
-
                 String leftNeighbour = i + "e" + (j - 1);
                 String upNeighbour = (i - 1) + "e" + j;
                 String rightNeighbour = i + "e" + (j + 1);
@@ -104,126 +87,79 @@ public class Board {
 
 
     }
-
+    //getter of the map property
     public Map<String, Square> getSquareMap() {
         return squareMap;
     }
 
 
-    public List<String> paths(String actualposition, int dice) {
+    public Set<String> paths(String actualposition, int dice) {
 
+        //Set container to hold the final possibilities of positions
+        Set<String> finalPositions = new HashSet<>();
 
-        List<String> iteratingList = squareMap.get(actualposition).getNeighboursList();
-        //System.out.println(squareMap.get(actualposition).getNeighboursList());
-        List<String> iteratingList2 = new LinkedList<>();
+        // setting initial position
+        String position = actualposition;
+        System.out.println("Initial Position : " + position);
+        String previousPosition = position;
 
+        //setting initial neighbours list
+        List<String> neighboursList = squareMap.get(position).getNeighboursList();
+        System.out.println("First Neighbour List : " + neighboursList);
 
-        for (String neighbour : iteratingList) {
-            int count = 0;
+        //big list of new neighbours
+        Set<String> newNeighbours = new HashSet<>();
 
-            while (count != dice) {
+        //List of Previous positions
+        Set<String> listPreviousPositions = new HashSet<>();
 
-                if (squareMap.get(neighbour) != null) {
-                    
-                    System.out.println(neighbour);
-                    iteratingList2 = squareMap.get(neighbour).getNeighboursList();
-                    iteratingList.remove(neighbour);
+        //iterating according to dice result
+        while (dice > 0){
 
-                    if (dice == 2 || dice == 4 || dice == 6) {
+            finalPositions.clear();
 
-                    for (String neighbour2 : iteratingList2) {
-                        if (squareMap.get(neighbour2) != null) {
+            for(String neighbour : neighboursList){
 
+                if(squareMap.get(neighbour) == null){
+                    continue;
+                }
 
-                            iteratingList = squareMap.get(neighbour2).getNeighboursList();
-                            iteratingList2.remove(neighbour2);
-                        }
-                        }
+                for(String previous : listPreviousPositions){
+                    if(neighbour.equals(previous)){
+                        previousPosition = previous;
                     }
                 }
-                count++;
+                if(neighbour.equals(previousPosition)){
+                    continue;
+                }
+
+                //see neighbours
+                position = neighbour;
+                System.out.println("Neighbours : " +  position);
+                // add position to final position
+                finalPositions.add(position);
+                System.out.println("***** final Possible Position :"+ finalPositions);
+
+                //add neighbours of neighbour to a big list of new neighbours
+                newNeighbours.addAll(squareMap.get(position).getNeighboursList());
+                System.out.println("--BIG list to be re-asked :" + newNeighbours);
+
+                //store the list of positions to pass as previous positions
+                listPreviousPositions.add(position);
             }
+
+            neighboursList.clear();
+            neighboursList.addAll(newNeighbours);
+            previousPosition = position;
+
+            dice--;
         }
 
-        System.out.println(iteratingList);
-        System.out.println(iteratingList2);
+        finalPositions.remove(actualposition);
+        System.out.println("*-*-*-*-*- Final Positions " + finalPositions + "*-*-*-*-*-");
 
-        //LinkedList<String> neighbours1 = squareMap.get(actualposition).getNeighboursList();
+        return finalPositions;
 
-        //LinkedList<String>[] levelNeighboursList = new LinkedList[10];
-      /* int i = 0;
-       String position = actualposition;
-       levelNeighboursList[i] = squareMap.get(position).getNeighboursList();
-       System.out.println(levelNeighboursList[i]);
-
-       for(int d = dice; d > 0; d--){
-
-           for (String neighbour : levelNeighboursList[i]) {
-               //squareMap.get(neighbour).getNeighboursList();
-
-               if (squareMap.get(neighbour) == null) {
-                   continue;
-               }
-               if(neighbour.equals(position)){
-                   continue;
-               }
-               System.out.println(" --- position : " + position);
-               System.out.println(" --- neighbour : " + neighbour);
-               position = neighbour;
-
-           }
-
-           levelNeighboursList[i+1] = squareMap.get(position).getNeighboursList();
-           i++;
-       } */
-
-
-        //System.out.println(levelNeighboursList[0] + " \n" + levelNeighboursList[1] + " \n" + levelNeighboursList[2] + " \n" + levelNeighboursList[3] + " \n" + levelNeighboursList[4] + " \n" + levelNeighboursList[5]);
-
-
-        //-------------------------------------------------
-       /*
-           for (String neighbour : neighbours1) {
-
-               if (squareMap.get(neighbour) == null) {
-                   continue;
-               }
-
-               if (dice == 0) {
-                   System.out.println(neighbours1);
-                   return neighbours1;
-               }
-               paths(neighbour, dice);
-           }  */
-
-        //-------------------------------------------------
-
-              /*  for (String neighbour : neighbours1) {
-                    //squareMap.get(neighbour).getNeighboursList();
-
-                    if (squareMap.get(neighbour) == null) {
-                        continue;
-                    }
-
-                    System.out.println(" --- neighbour 1: " + neighbour);
-                    //System.out.println(squareMap.get(neighbour).getNeighboursList());
-                    List<String> neighbours2 = squareMap.get(neighbour).getNeighboursList();
-
-                    for(String neighbour2: neighbours2){
-                        if (squareMap.get(neighbour2) == null) {
-                            continue;
-                        }
-                        if(neighbour2.equals(actualposition)){
-                            continue;
-                        }
-                        System.out.println("neighbour 2: " + neighbour2);
-                        //System.out.println(squareMap.get(neighbour2).getNeighboursList());
-                    }
-                } */
-
-
-        return null;
     }
-
 
 }

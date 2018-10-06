@@ -14,6 +14,6 @@ public class Main {
 
        Board board = new Board();
         board.position();
-        board.paths("1e1",2);
+        board.paths("6e1",2);
     }
 }
