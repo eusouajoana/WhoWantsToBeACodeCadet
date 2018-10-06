@@ -51,7 +51,7 @@ public class Game {
     public boolean isWinner(Player player) {
         if (player.isWinner()) {
             System.out.println(player.getName() + ": I'm the winner");
-            Text text = new Text(20, 30.4D, player.getName() + ": I'm the winner");
+            Text text = new Text(20, 30, player.getName() + ": I'm the winner");
             text.setColor(Color.BLACK);
             text.draw();
             return this.winner = true;

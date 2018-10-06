@@ -19,7 +19,7 @@ public class SimpleGfxGrid implements Grid{
         this.cols = var1;
         this.rows = var2;
         this.grid = new Rectangle(10, 10, (double)(var1 * 24), (double)(var2 * 24));
-        this.picture = new Picture(0, 0, "resources/img/ac_logo.png");
+        this.picture = new Picture(10, 10, "resources/img/ac_logo.png");
         this.init();
     }
 
@@ -44,7 +44,7 @@ public class SimpleGfxGrid implements Grid{
 
     public int getCellsize() {
 
-        return 25;
+        return 24;
     }
 
     public int getCols() {

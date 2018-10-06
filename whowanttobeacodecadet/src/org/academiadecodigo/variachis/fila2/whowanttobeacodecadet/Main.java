@@ -1,12 +1,13 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.SimpleGfxGrid;
 
 public class Main {
 
     public static void main(String[] args) {
+
+
+        // Print <AC_> logo with SimpleGraphics
+        SimpleGfxGrid grid = new SimpleGfxGrid(30, 30);
 
         Game game = new Game();
 
@@ -18,10 +19,6 @@ public class Main {
        /* Board board = new Board();
         board.position();
         board.paths("1e1",2); */
-
-        // Print <AC_> logo with SimpleGraphics
-        Picture pic = new Picture(20, 100, "resources/img/ac_logo.png");
-        pic.draw();
 
     }
 }
