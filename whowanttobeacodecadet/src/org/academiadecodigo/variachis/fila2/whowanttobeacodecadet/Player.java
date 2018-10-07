@@ -55,6 +55,7 @@ public class Player {
     }
 
     //Player can choose his path according to the dice result
+    //TODO transform this method to choose through keyboard!!!
     public void choosePath(Set<String> listOfPaths){
 
         String choosedPosition = new String();

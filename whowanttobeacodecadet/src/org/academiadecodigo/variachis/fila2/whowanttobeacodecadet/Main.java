@@ -23,23 +23,20 @@ public class Main {
        //Test player changing position
             //System.out.println("Player :"+ game.getPlayers()[i].getName()+ " Actual Position : " + game.getPlayers()[i].getActualposition());
 
-            String actualPlace = game.getPlayers()[0].getActualposition();
-            System.out.println("Actualplace : " + actualPlace);
-            int dice1 = game.getPlayers()[0].rollDice();
-            System.out.println("dice : " + dice1);
-            Set<String> paths = game.getBoard().paths(actualPlace,dice1);
-            game.getPlayers()[0].choosePath(paths);
+        int x = 3;
+        while(x > 0) {
+            for (int i = 0; i < game.getPlayers().length; i++) {
+                String actualPlace = game.getPlayers()[i].getActualposition();
+                System.out.println("Actualplace : " + actualPlace);
+                int dice1 = game.getPlayers()[i].rollDice();
+                System.out.println("dice : " + dice1);
+                Set<String> paths = game.getBoard().paths(actualPlace, dice1);
+                game.getPlayers()[i].choosePath(paths);
 
-            System.out.println("Player :"+ game.getPlayers()[0].getName()+ " " + game.getPlayers()[0].getActualposition());
-
-        actualPlace = game.getPlayers()[1].getActualposition();
-        System.out.println("Actualplace : " + actualPlace);
-        dice1 = game.getPlayers()[1].rollDice();
-        System.out.println("dice : " + dice1);
-        Set<String> paths1 = game.getBoard().paths(actualPlace,dice1);
-        game.getPlayers()[1].choosePath(paths1);
-
-        System.out.println("Player :"+ game.getPlayers()[1].getName()+ " " + game.getPlayers()[1].getActualposition());
+                System.out.println("Player :" + game.getPlayers()[i].getName() + " " + game.getPlayers()[i].getActualposition());
+            }
+            x--;
+        }
 
 
     }

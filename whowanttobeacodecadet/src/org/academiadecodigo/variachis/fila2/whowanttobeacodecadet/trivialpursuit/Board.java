@@ -30,7 +30,7 @@ public class Board {
                     //identifying position of the square in a key
                     String key = i + "e" + j;
 
-                    //instantiate a square
+                    //instantiating a square
                     Square square = new Square();
 
                     String leftNeighbour = i + "e" + (j - 1);
@@ -56,10 +56,10 @@ public class Board {
 
                 int[] vector = {i, j};
 
-                //teste key
+                //setting key
                 String key = i + "e" + j;
 
-                //instantiate a square
+                //instantiating a square
                 Square square = new Square();
 
                 String leftNeighbour = i + "e" + (j - 1);
@@ -82,14 +82,14 @@ public class Board {
 
 
     }
-    //getter of the map property
+
+    //getter of the map
     public Map<String, Square> getSquareMap() {
         return squareMap;
     }
 
-    //TODO resolver problema do neighbour List - por alguma razão, depois de fazer o clear(), ele não aceita receber mais valores!
-    //TODO se não fizer o clear, a list não se apaga, e acrescenta valores toda vez que invoco o método.
 
+    //Board offer set of possible paths to the Player according to the dice result
     public Set<String> paths(String actualPosition, int dice) {
 
         //Print Dice
@@ -107,7 +107,8 @@ public class Board {
         String previousPosition = position;
 
         //setting initial neighbours list
-        List<String> neighboursList = squareMap.get(position).getNeighboursList();
+        Set<String> neighboursList = new HashSet<>();
+        neighboursList.addAll(squareMap.get(position).getNeighboursList());
         System.out.println("neighbour list initial: " + neighboursList);
 
         //big list of new neighbours

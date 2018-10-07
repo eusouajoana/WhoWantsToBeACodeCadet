@@ -1,13 +1,15 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit;
 
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class Square {
 
     //------------- Properties ----------------------------
 
     //Knowing Neighbours
-    private LinkedList<String> neighboursList;
+    private Set<String> neighboursList;
 
 
     //Question category of the square
@@ -20,7 +22,7 @@ public class Square {
     //------------- Constructor -------------------------
 
     public Square() {
-        this.neighboursList = new LinkedList<>();
+        this.neighboursList = new HashSet<>();
 
         // this.row = row;
         // this.col = col;
@@ -30,7 +32,7 @@ public class Square {
     //------------- Methods ------------------------------
 
 
-    public LinkedList<String> getNeighboursList() {
+    public Set<String> getNeighboursList() {
         return neighboursList;
     }
 
