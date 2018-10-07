@@ -2,6 +2,8 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
 
+import java.util.List;
+
 public class Game {
 
     private Player[] players;
@@ -29,7 +31,7 @@ public class Game {
                 QuestionSelector.Type category = QuestionSelector.randomCategory();
 
                 //dar uma pergunta random da categoria que saiu
-                String question = QuestionSelector.getRandomQuestion(category);
+                Object question = QuestionSelector.getRandomQuestions(category);
 
 
 

@@ -8,10 +8,8 @@ public class QuestionSelector {
         MASTERS,
         CODE_CADETS,
         PROGRAMMING_CONCEPTS,
-        RANDOM;
+        ACADEMIA;
     }
-
-
 
 
     // Associar o tipo às suas instâncias
@@ -24,9 +22,8 @@ public class QuestionSelector {
         map.put(Type.MASTERS, MastersQuestions.values());
         map.put(Type.CODE_CADETS, CodeCadetsQuestions.values());
         map.put(Type.PROGRAMMING_CONCEPTS, ProgrammingConceptsQuestions.values());
-        map.put(Type.RANDOM, AcademiaQuestions.values());
+        map.put(Type.ACADEMIA, AcademiaQuestions.values());
     }
-
 
 
     public static void getAllQuestions(Type type) {
@@ -34,16 +31,23 @@ public class QuestionSelector {
     }
 
 
-
     //get all answers for a specific question
-    public static String[] getAnswers(Type type) {
+    public static List<String> getAnswers(Type type) {
 
-     Type category = randomCategory();
-     Object question = getRandomQuestions(category);
+        switch (type) {
+            case MASTERS:
+                return ((MastersQuestions) getRandomQuestions(Type.MASTERS)).getAnswers();
 
-        question.getAnswers();
+            case PROGRAMMING_CONCEPTS:
+                return ((ProgrammingConceptsQuestions) getRandomQuestions(Type.PROGRAMMING_CONCEPTS)).getAnswers();
 
+            case ACADEMIA:
+                return ((AcademiaQuestions) getRandomQuestions(Type.ACADEMIA)).getAnswers();
 
+            case CODE_CADETS:
+                return ((CodeCadetsQuestions) getRandomQuestions(Type.CODE_CADETS)).getAnswers();
+        }
+        return null;
     }
 
 
@@ -55,20 +59,20 @@ public class QuestionSelector {
     }
 
 
-    public static Question getRandomQuestions(Type type) {
+
+    public static Object getRandomQuestions(Type type) {
         switch (type) {
             case MASTERS:
-                return (Question) MastersQuestions.values()[(int)(Math.random()* MastersQuestions.values().length)];
+                return MastersQuestions.values()[(int) (Math.random() * MastersQuestions.values().length)];
             case CODE_CADETS:
-                return (Question)CodeCadetsQuestions.values()[(int)(Math.random()* CodeCadetsQuestions.values().length)];
-            case RANDOM:
-                return (Question) AcademiaQuestions.values()[(int)(Math.random()* AcademiaQuestions.values().length)];
+                return CodeCadetsQuestions.values()[(int) (Math.random() * CodeCadetsQuestions.values().length)];
+            case ACADEMIA:
+                return AcademiaQuestions.values()[(int) (Math.random() * AcademiaQuestions.values().length)];
             case PROGRAMMING_CONCEPTS:
-                return (Question) ProgrammingConceptsQuestions.values()[(int)(Math.random()* ProgrammingConceptsQuestions.values().length)];
+                return ProgrammingConceptsQuestions.values()[(int) (Math.random() * ProgrammingConceptsQuestions.values().length)];
         }
         return null;
     }
-
 
 
 

@@ -12,7 +12,7 @@ public enum MastersQuestions {
     JEDI_MASTERS("Who are the 4 Jedi Masters of <Academia de Código_>?", new String[]{"Jorge, Sérgio, Rodolfo, Antoninho", "Rafael, Soraia, Ferrão, António", "Catarina, Danlo, Brighenti, Sérgio"}),
     SID_ALTEREGO("Who is Sid's alter ego?", new String[]{"Beyoncé", "Chris Cornell", "Tina Turner"}),
     LIES("What is the biggest lie the Masters told us in the Bootcamp?", new String[]{"That 'Simple' Graphics were simple", "That Master Jorge invented LinkedLists", "That we could trust them"}),
-    JORGE_SKILL("What's the only skill that Jorge doesn't have?", new String[]{"Make jokes", "Build a desk", "Use the mouse"}),
+    JORGE_SKILL("What's the only skill that Jorge doesn't have?", new String[]{"Make funny jokes", "Build a desk", "Use the mouse"}),
     FILIPE_TEA("What is the pussy tea that Filipe drinks almost every day?", new String[]{"Chá verde hortelã e lima", "Chá de pau de cabinda", "Chá de pés de cereja"}),
     TRIGGER("What are the masters triggered by?", new String[]{"Non idented code", "Stupid questions and wrong answers", "Sagres"}),
     BOOTCAMP_JORGE("What was the name and number of Master Jorge's Bootcamp?", new String[] {"", "", ""}),
@@ -21,8 +21,8 @@ public enum MastersQuestions {
     BOOTCAMP_SERINGAS("What was the name and number of Master Seringas' Bootcamp?", new String[] {"#15 Popstars", "#15 TECHceiros", "#13 Popstars"}),
     NAME_JORGE("What is the true first name of our Master Jorge?", new String[] {"Elton", "Helton", "Jesus"}),
     NAME_SERINGAS("What is the real name of Master Seringas?", new String[] {"Luís", "Miguel","Daniel"}),
-
-    
+    GAME_JORGE("What was the name of Master Jorge's game in his bootcamp?", new String[] {"Tanks", "SingStar", "Doom"}),
+    PUSSY("What's the pussiest thing ever?", new String[] {"Using the mouse to copy a file", "Being afraid of Master Jorge's 'you're a donkey' look", "Saying Windows is better than Linux"});
 
 
     private static Set<QuestionSelector> removedQuestions = new HashSet<>();
