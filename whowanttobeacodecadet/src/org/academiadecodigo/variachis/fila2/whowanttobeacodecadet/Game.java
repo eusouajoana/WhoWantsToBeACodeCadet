@@ -17,7 +17,7 @@ public class Game {
         Player player1 = new Player("player1");
         Player player2 = new Player("player2");
         this.players = new Player[]{player1, player2};
-       // this.questionSelector = new QuestionSelector();
+        // this.questionSelector = new QuestionSelector();
     }
 
 
@@ -29,10 +29,13 @@ public class Game {
             for (Player player : players) {
 
                 //escolher uma categoria random
+                QuestionSelector.init();
                 QuestionSelector.Type category = QuestionSelector.randomCategory();
+                System.out.println("New category: " + category);
 
                 //dar uma pergunta random da categoria que saiu
                 Question question = QuestionSelector.getRandomQuestions(category);
+                System.out.println(question.getStatement());
 
                 //player choose uma answer random de todas as answers possíveis
                 String answer = player.choose(question.getAnswers());
@@ -49,19 +52,23 @@ public class Game {
 
                     //se não, nova pergunta e resposta
                     category = QuestionSelector.randomCategory();
+                    System.out.println("New category: " + category);
                     question = QuestionSelector.getRandomQuestions(category);
+                    System.out.println(question.getStatement());
                     answer = player.choose(question.getAnswers());
+                }
+
+                if (isGameWinner(player)) {
+                    System.out.println(player.getName() + " is the winner!");
+                    break;
                 }
             }
         }
     }
 
 
-
-
     public boolean isGameWinner(Player player) {
         if (player.isWinner()) {
-            System.out.println(player.getName() + ": I'm the winner");
             return this.gameWinner = true;
         }
         return gameWinner = false;

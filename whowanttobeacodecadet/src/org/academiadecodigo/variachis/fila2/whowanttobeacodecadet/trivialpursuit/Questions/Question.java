@@ -12,7 +12,7 @@ public interface Question {
     String getRightAnswer();
 
 
-
+    public String getStatement();
 
 
     /*private static Set<Question> removedQuestions = new HashSet<>();
