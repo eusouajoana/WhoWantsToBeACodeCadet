@@ -39,12 +39,14 @@ public class Game {
 
 
 
+
+
                // QuestionSelector question  = QuestionSelector.giveQuestion();
                 //player choose uma answer random
                 String answer = player.choose(question.getAnswers());
 
                 //enquanto a resposta for certa e não chegar a score 10
-                while (answer.equals(QuestionSelector.getRightAnswer()) && !player.isWinner()) {
+                while (answer.equals(QuestionSelector.question.getRightAnswer()) && !player.isWinner()) {
                     //aumentar o score
                     player.isRightAnswer();
                     //perguntar se score já é 10 (vencedor), se sim, sair do loop
@@ -53,12 +55,15 @@ public class Game {
                     }
 
                     //se não, nova pergunta e resposta
-                    question = QuestionSelector.getRandomQuestion().giveQuestion();
+                    category = QuestionSelector.randomCategory();
+                    question = QuestionSelector.getRandomQuestion(category);
                     answer = player.choose(question.getAnswers());
                 }
             }
         }
     }
+
+
 
 
     public boolean isGameWinner(Player player) {

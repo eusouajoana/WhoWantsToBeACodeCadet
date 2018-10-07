@@ -11,10 +11,18 @@ public enum MastersQuestions {
     SERINGAS_SENTENCE("What's Seringa's favorite sentence?", new String[]{"Curti bué da tua cena", "ssssssssssss", "A gente vamos"}),
     JEDI_MASTERS("Who are the 4 Jedi Masters of <Academia de Código_>?", new String[]{"Jorge, Sérgio, Rodolfo, Antoninho", "Rafael, Soraia, Ferrão, António", "Catarina, Danlo, Brighenti, Sérgio"}),
     SID_ALTEREGO("Who is Sid's alter ego?", new String[]{"Beyoncé", "Chris Cornell", "Tina Turner"}),
-    LIES("What is the biggest lie the masters told us in the Bootcamp?", new String[]{"That 'Simple' Graphics were simple", "That Master Jorge invented LinkedLists", "That we could trust them"}),
+    LIES("What is the biggest lie the Masters told us in the Bootcamp?", new String[]{"That 'Simple' Graphics were simple", "That Master Jorge invented LinkedLists", "That we could trust them"}),
     JORGE_SKILL("What's the only skill that Jorge doesn't have?", new String[]{"Make jokes", "Build a desk", "Use the mouse"}),
     FILIPE_TEA("What is the pussy tea that Filipe drinks almost every day?", new String[]{"Chá verde hortelã e lima", "Chá de pau de cabinda", "Chá de pés de cereja"}),
-    TRIGGER("What are the masters triggered by?", new String[]{"Non idented code", "Stupid questions and wrong answers", "Sagres"});
+    TRIGGER("What are the masters triggered by?", new String[]{"Non idented code", "Stupid questions and wrong answers", "Sagres"}),
+    BOOTCAMP_JORGE("What was the name and number of Master Jorge's Bootcamp?", new String[] {"", "", ""}),
+    BOOTCAMP_FILIPE("What was the name and number of Master Filipe's Bootcamp?", new String[] {"#8 Sshavages", "#8 Bitlers", "#9 Sshavages"}),
+    BOOTCAMP_SID("What was the name and number of Master Sid's Bootcamp?", new String[] {"#14 Haltistas", "#14 Sshpesshials", "#13 Haltistas"}),
+    BOOTCAMP_SERINGAS("What was the name and number of Master Seringas' Bootcamp?", new String[] {"#15 Popstars", "#15 TECHceiros", "#13 Popstars"}),
+    NAME_JORGE("What is the true first name of our Master Jorge?", new String[] {"Elton", "Helton", "Jesus"}),
+    NAME_SERINGAS("What is the real name of Master Seringas?", new String[] {"Luís", "Miguel","Daniel"}),
+
+    
 
 
     private static Set<QuestionSelector> removedQuestions = new HashSet<>();

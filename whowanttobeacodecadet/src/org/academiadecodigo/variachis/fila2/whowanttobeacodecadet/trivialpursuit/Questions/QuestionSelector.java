@@ -41,14 +41,15 @@ public class QuestionSelector {
 
     //get all answers for a specific question
     public static String[] getAnswers(Type type) {
-     //  Type category = randomCategory();
-       // String question = getRandomQuestion(category);
+
+     Type category = randomCategory();
+     Object question = getRandomQuestions(category);
 
         question.getAnswers();
 
-        MastersQuestions.FILIPE_CAT_NAME.getAnswers();
 
     }
+
 
 
 
@@ -56,6 +57,22 @@ public class QuestionSelector {
         System.out.println(Arrays.toString(map.get(type)));
         return Arrays.toString(map.get(type));
     }
+
+
+    public static  getRandomQuestions(Type type) {
+        switch (type) {
+            case MASTERS:
+                return MastersQuestions.values()[(int)(Math.random()* MastersQuestions.values().length)];
+            case CODE_CADETS:
+                return CodeCadetsQuestions.values()[(int)(Math.random()* CodeCadetsQuestions.values().length)];
+            case RANDOM:
+                return RandomQuestions.values()[(int)(Math.random()* RandomQuestions.values().length)];
+            case PROGRAMMING_CONCEPTS:
+                return ProgrammingConceptsQuestions.values()[(int)(Math.random()* ProgrammingConceptsQuestions.values().length)];
+        }
+        return null;
+    }
+
 
 
 

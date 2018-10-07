@@ -12,7 +12,7 @@ public enum CodeCadetsQuestions {
     DANIEL_DAUGHTER("What's the name of Daniel's daughter", new String[]{"Lara", "Laura", "Daniela"}),
     VITOR_FROM("Where is Vitor from?", new String[]{"Batalha", "Leiria", "Abrantes"}),
     DAVID_LOVES("What does David love?", new String[]{"Javascript", "His daughter", "His wife"}),
-    ROLAO_FRIEND("Who is Rolão's best friend?", new String[]{"Robin", "Rute", "The code"}),
+    IVO("What is Ivo proud of?", new String[]{"He lost 10kg in 1 and half months", "He is a father of a little man called Ivo Júnior", "He bombates code"}),
     FILIPE_FROM("Where's Filipe from?", new String[]{"Feira", "KDK", "Puerto carago"}),
     IVO_LUNCH("What does Ivo like for lunch?", new String[]{"Sliced cucumber", "A pizza with extra cheese", "Sausages"}),
     MIGUEL_LOVES("What does Miguel love?", new String[]{"Barracas", "Valadas", "Gazetas"}),
