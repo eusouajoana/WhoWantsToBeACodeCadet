@@ -1,7 +1,12 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
+<<<<<<< HEAD
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.Question;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
+=======
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
+>>>>>>> 13bc07f08accdaa8a6bc10e004aafaa5b0782076
 
 import java.util.List;
 
@@ -69,7 +74,15 @@ public class Game {
 
     public boolean isGameWinner(Player player) {
         if (player.isWinner()) {
+<<<<<<< HEAD
             return this.gameWinner = true;
+=======
+            System.out.println(player.getName() + ": I'm the winner");
+            Text text = new Text(20, 30, player.getName() + ": I'm the winner");
+            text.setColor(Color.BLACK);
+            text.draw();
+            return this.winner = true;
+>>>>>>> 13bc07f08accdaa8a6bc10e004aafaa5b0782076
         }
         return gameWinner = false;
     }
