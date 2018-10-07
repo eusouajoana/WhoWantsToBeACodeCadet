@@ -1,6 +1,8 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Dice;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 import java.util.LinkedList;
 import java.util.List;
