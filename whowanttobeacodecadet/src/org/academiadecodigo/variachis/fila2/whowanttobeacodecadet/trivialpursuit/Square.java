@@ -1,5 +1,7 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit;
 
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
@@ -13,7 +15,7 @@ public class Square {
 
 
     //Question category of the square
-    private Category category;
+    private QuestionSelector.Type category;
 
     //ID of the square
     private int[] id;
@@ -41,6 +43,14 @@ public class Square {
         return "Square{" +
                 "neighboursList=" + neighboursList +
                 '}';
+    }
+
+    public void setCategory(QuestionSelector.Type category) {
+        this.category = category;
+    }
+
+    public QuestionSelector.Type getCategory() {
+        return category;
     }
 }
 

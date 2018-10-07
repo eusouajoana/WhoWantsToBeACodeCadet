@@ -1,5 +1,7 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit;
 
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
+
 import java.util.*;
 
 public class Board {
@@ -74,6 +76,7 @@ public class Board {
                 square.getNeighboursList().add(rightNeighbour);
                 square.getNeighboursList().add(downNeighbour);
 
+
                 //putting square in the map
                 squareMap.put(key, square);
             }
@@ -99,25 +102,20 @@ public class Board {
         //Set container to hold the final possibilities of positions
         Set<String> finalPositions = new HashSet<>();
         finalPositions.clear();
-        System.out.println("final positions initial : " + finalPositions);
 
         // setting initial position
         String position = actualPosition;
-        System.out.println("Initial Position : " + position);
         String previousPosition = position;
 
         //setting initial neighbours list
         Set<String> neighboursList = new HashSet<>();
         neighboursList.addAll(squareMap.get(position).getNeighboursList());
-        System.out.println("neighbour list initial: " + neighboursList);
 
         //big list of new neighbours
         Set<String> newNeighbours = new HashSet<>();
-        System.out.println("newNeighbour List initial : " + newNeighbours);
 
         //List of Previous positions
         Set<String> listPreviousPositions = new HashSet<>();
-        System.out.println("listPrevious positions initial : " +listPreviousPositions);
 
         //iterating according to dice result
         while (dice > 0){
@@ -172,5 +170,49 @@ public class Board {
 
     public Dice getDice() {
         return dice;
+    }
+
+    //Method to transform String key Position in a int array
+    public List<Integer> transformKeyPosition(String key){
+
+        String[] keyTransform = key.split("");
+        System.out.println(keyTransform[0] + " " + keyTransform[1] + " " + keyTransform[2]);
+        List<Integer> squarePosition = new LinkedList<>();
+        squarePosition.clear();
+
+        for(int i = 0; i < keyTransform.length; i++){
+            if(keyTransform[i].equals("e")){
+                continue;
+            }
+            int num = Integer.parseInt(keyTransform[i]);
+            squarePosition.add(num);
+        }
+
+        System.out.println(squarePosition);
+
+        return squarePosition;
+    }
+
+    public void settingSquaresCategory(){
+
+        for(String key: squareMap.keySet()){
+
+            switch(key){
+                case "1e1": case "5e1": case "8e1": case "11e2": case "6e5": case "11e6": case "11e10": case "8e11": case "6e10": case"4e11": case"1e8": case"1e5": case"4e6": case"9e6":
+                    squareMap.get(key).setCategory(QuestionSelector.Type.ACADEMIA);
+                    break;
+                case "1e3": case "3e1": case "2e6": case "1e7": case "1e11": case "5e11": case "9e11": case "11e8": case "10e6": case"6e7": case"6e4": case"6e1": case"10e1": case"11e3":
+                    squareMap.get(key).setCategory(QuestionSelector.Type.CODE_CADETS);
+                    break;
+                case "1e2": case "1e6": case "1e10": case "3e11": case "7e11": case "11e11": case "11e7": case "11e4": case "9e1": case"6e2": case"7e6": case"3e6": case"6e9": case"4e1":
+                    squareMap.get(key).setCategory(QuestionSelector.Type.MASTERS);
+                    break;
+                case "6e6":
+                    squareMap.get(key).setCategory(QuestionSelector.randomCategory());
+                    break;
+                default:
+                    squareMap.get(key).setCategory(QuestionSelector.Type.PROGRAMMING_CONCEPTS);
+            }
+        }
     }
 }

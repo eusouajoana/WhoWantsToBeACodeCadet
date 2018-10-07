@@ -4,8 +4,11 @@ import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Square;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Game {
 
@@ -21,6 +24,7 @@ public class Game {
         Player player2 = new Player("player2");
         this.players = new Player[]{player1, player2};
         this.board = new Board();
+        this.board.settingSquaresCategory();
         // this.questionSelector = new QuestionSelector();
     }
 
@@ -32,12 +36,25 @@ public class Game {
             //para cada player
             for (Player player : players) {
 
-                //escolher uma categoria random
-                QuestionSelector.init();
-                QuestionSelector.Type category = QuestionSelector.randomCategory();
+                //get actual position of the player and player roll the dice
+                String actualPosition = player.getActualposition();
+                System.out.println(player.getName() + " Actual position : " + player.getActualposition());
+                int dice = player.rollDice();
+
+                //board offer the possible paths to choose for the player
+                Set<String> possiblePaths = new HashSet<>();
+                possiblePaths.addAll(board.paths(actualPosition,dice));
+
+                //player choose a path
+                player.choosePath(possiblePaths);
+                System.out.println(player.getName() + " New Position: " + player.getActualposition());
+
+                //Question Category according to the actual position of Player
+                Square square = board.getSquareMap().get(player.getActualposition());
+                QuestionSelector.Type category = square.getCategory();
                 System.out.println("New category: " + category);
 
-                //dar uma pergunta random da categoria que saiu
+                //dar uma pergunta random da categoria da Posição do Player
                 Question question = QuestionSelector.getRandomQuestions(category);
                 System.out.println(question.getStatement());
 
@@ -55,6 +72,18 @@ public class Game {
                     }
 
                     //se não, nova pergunta e resposta
+
+                    //get actual position of the player and player roll the dice
+                    actualPosition = player.getActualposition();
+                    dice = player.rollDice();
+                    //board offer the possible paths to choose for the player
+                    possiblePaths.clear();
+                    possiblePaths.addAll(board.paths(actualPosition,dice));
+                    //player choose a path
+                    player.choosePath(possiblePaths);
+                    System.out.println(player.getName() + " New Position: " + player.getActualposition());
+
+
                     category = QuestionSelector.randomCategory();
                     System.out.println("New category: " + category);
                     question = QuestionSelector.getRandomQuestions(category);
@@ -74,10 +103,9 @@ public class Game {
     public boolean isGameWinner(Player player) {
         if (player.isWinner()) {
 
-            System.out.println(player.getName() + ": I'm the winner");
-            Text text = new Text(20, 30, player.getName() + ": I'm the winner");
+            /*Text text = new Text(20, 30, player.getName() + ": I'm the winner");
             text.setColor(Color.BLACK);
-            text.draw();
+            text.draw();*/
             return this.gameWinner = true;
         }
         return gameWinner = false;
