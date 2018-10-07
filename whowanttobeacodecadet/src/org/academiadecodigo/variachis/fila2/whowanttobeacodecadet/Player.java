@@ -3,6 +3,7 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Dice;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.LittleCheese;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,18 +16,32 @@ public class Player {
     private boolean winner;
     private boolean rightAnswer;
     private String actualposition;
+    private LittleCheese littleCheese;
 
 
     //Constructor
     public Player(String name) {
         this.name = name;
         this.actualposition = "6e6";
+        this.littleCheese = new LittleCheese();
+        setCheeseColor();
+    }
+
+
+    //color of the cheese, according to player
+    public void setCheeseColor() {
+        if (name.equals("player1")) {
+            littleCheese.setColor(Color.YELLOW);
+            return;
+        }
+        littleCheese.setColor(Color.ORANGE);
     }
 
 
     public String getName() {
         return name;
     }
+
 
 
     public boolean isRightAnswer() {
@@ -52,27 +67,27 @@ public class Player {
     }
 
     //Player can roll Dice to generate a random number [1 - 6]
-    public int rollDice(){
+    public int rollDice() {
         return Dice.rollDice();
     }
 
     //Player can choose his path according to the dice result
     //TODO transform this method to choose through keyboard!!!
-    public void choosePath(Set<String> listOfPaths){
+    public void choosePath(Set<String> listOfPaths) {
 
         String choosedPosition = new String();
 
         //choose randomly a new Position
         int randomChoose = (int) (Math.random() * listOfPaths.size());
         int count = 0;
-        for(String position : listOfPaths){
+        for (String position : listOfPaths) {
 
-            if(randomChoose == count){
+            if (randomChoose == count) {
                 choosedPosition = position;
                 break;
             }
 
-                count++;
+            count++;
         }
 
         actualposition = choosedPosition;

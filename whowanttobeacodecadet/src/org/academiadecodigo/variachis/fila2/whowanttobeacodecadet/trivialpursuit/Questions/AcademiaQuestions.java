@@ -25,7 +25,10 @@ public enum AcademiaQuestions implements Question{
     KEN_CODI("Who is the Obi-Wan KenCodi of <Academia de Código_>?", new String[] {"Rui Ferrão", "Pedro Brighenti", "Pedro Antoninho"}),
     FULLSTACK("What do we like?", new String[] {"Full Stack", "Front-end", "Back-end"}),
     INFINITE_LOOP("What's the only situation when you need an infinite loop?", new String[] {"While !bootcampEnd : Eat, sleep, code, repeat", "While !SrZéclosed: Média, Super, drink, repeat", "While inTheBootcamp: Scream, cry, despair, repeat"}),
-    FINISH("What are you when you finish the bootcamp?", new String[] {"A <Junior Fullstack Developer>", "A <Padawan Master Coder>", "A <Human Rag>"});
+    FINISH("What are you when you finish the bootcamp?", new String[] {"A <Junior Fullstack Developer>", "A <Padawan Master Coder>", "A <Human Rag>"}),
+    NAME_BOOTCAMP1("What was the name of the first Bootcamp ever?", new String[] {"Unixcórnios", "Javangers", "Bashtards"}),
+    PEOPLE("How many people have already finished the bootcamps?", new String[] {"Almost 400", "Almost 1000", "More than 500"}),
+    JUNIOR("What is the name of the <Academia de Código_>'s project developed especially for children? ", new String[] {"Academia de Código Júnior", "Mini Academia de Código", "Baby CodeCademy"});
 
 
     private static Set<QuestionSelector> removedQuestions = new HashSet<>();

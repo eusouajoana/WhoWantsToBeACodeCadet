@@ -1,5 +1,10 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.LittleCheese;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.SimpleGfxBoard;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.SimpleGfxGrid;
 
 import java.util.Set;
 
@@ -37,6 +42,12 @@ public class Main {
             }
             x--;
         }
+
+
+       SimpleGfxGrid grid = new SimpleGfxGrid(120, 90);
+
+        //SimpleGfxBoard.makeAllBoard();
+
 
 
     }

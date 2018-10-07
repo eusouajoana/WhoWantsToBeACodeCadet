@@ -1,4 +1,5 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
+
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.Question;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
@@ -75,9 +76,9 @@ public class Game {
         if (player.isWinner()) {
 
             System.out.println(player.getName() + ": I'm the winner");
-            Text text = new Text(20, 30, player.getName() + ": I'm the winner");
-            text.setColor(Color.BLACK);
-            text.draw();
+            //Text text = new Text(20, 30, player.getName() + ": I'm the winner");
+            //text.setColor(Color.BLACK);
+            //text.draw();
             return this.gameWinner = true;
         }
         return gameWinner = false;
