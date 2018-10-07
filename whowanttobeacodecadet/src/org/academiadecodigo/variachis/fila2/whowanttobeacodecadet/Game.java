@@ -1,5 +1,6 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.Question;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
 
 import java.util.List;
@@ -31,18 +32,14 @@ public class Game {
                 QuestionSelector.Type category = QuestionSelector.randomCategory();
 
                 //dar uma pergunta random da categoria que saiu
-                Object question = QuestionSelector.getRandomQuestions(category);
+                Question question = QuestionSelector.getRandomQuestions(category);
 
-
-
-
-
-               // QuestionSelector question  = QuestionSelector.giveQuestion();
-                //player choose uma answer random
+                //player choose uma answer random de todas as answers possíveis
                 String answer = player.choose(question.getAnswers());
 
-                //enquanto a resposta for certa e não chegar a score 10
-                while (answer.equals(QuestionSelector.question.getRightAnswer()) && !player.isWinner()) {
+
+                //enquanto a resposta for certa e não chegar a score 10 (winner)
+                while (answer.equals(question.getRightAnswer()) && !player.isWinner()) {
                     //aumentar o score
                     player.isRightAnswer();
                     //perguntar se score já é 10 (vencedor), se sim, sair do loop
@@ -52,7 +49,7 @@ public class Game {
 
                     //se não, nova pergunta e resposta
                     category = QuestionSelector.randomCategory();
-                    question = QuestionSelector.getRandomQuestion(category);
+                    question = QuestionSelector.getRandomQuestions(category);
                     answer = player.choose(question.getAnswers());
                 }
             }

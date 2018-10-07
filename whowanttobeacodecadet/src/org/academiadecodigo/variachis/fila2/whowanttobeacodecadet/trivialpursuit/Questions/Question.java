@@ -1,11 +1,21 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions;
 
 import java.util.*;
-/*
-public enum Question {
+
+public interface Question {
+
+    //my question can get it's answers
+    List<String> getAnswers();
 
 
-    private static Set<Question> removedQuestions = new HashSet<>();
+    //get the right answer for my question
+    String getRightAnswer();
+
+
+
+
+
+    /*private static Set<Question> removedQuestions = new HashSet<>();
 
     private String[] answers;
     private String statement;
@@ -49,7 +59,8 @@ public enum Question {
     private static Question getRandom() {
         return Question.values()[(int) (Math.random() * Question.values().length)];
     }
+*/
 
 }
 
-*/
+

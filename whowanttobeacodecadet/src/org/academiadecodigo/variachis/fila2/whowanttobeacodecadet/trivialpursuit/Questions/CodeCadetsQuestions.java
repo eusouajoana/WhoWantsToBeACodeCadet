@@ -2,7 +2,7 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursui
 
 import java.util.*;
 
-public enum CodeCadetsQuestions {
+public enum CodeCadetsQuestions implements Question {
 
     FELIPE_COUNTRY("Where's Felipe from?", new String[]{"Braziuziu", "Argentina", "Peru"}),
     CRIS_CITY("Where's Cristiano from?", new String[]{"Texas City", "Tortosendo City", "Teixoso"}),
@@ -41,7 +41,9 @@ public enum CodeCadetsQuestions {
     TIAGO_DREAM("What's Tiago's lifelong dream?", new String[]{"To be a serial killer", "To be a ballerina", "To be a butcher"}),
     IVO_DO("What does Ivo do?", new String[]{"He bombates code", "He punches the mac everyday", "He watches videos only wearing underpants"}),
     PALMA_FETISH("What's Palma's newest fetish?", new String[]{"Imagining Sara and Joana in a lesbian relationship", "Watching migdet porn", "Getting a boner with programming videos"}),
-    VITOR_CRUSH("Which is Vitor's favorite Anime?", new String[]{"Hunter x Hunter", "One punch man", "One piece"});
+    VITOR_CRUSH("Which is Vitor's favorite Anime?", new String[]{"Hunter x Hunter", "One punch man", "One piece"}),
+    TIAGO_SUPERPOWER("What's Tiago's super power?", new String[] {"He eats like Songoku and doesn't get fat", "He is a ninja", "He comes from Chaves, what other super power do you need?"}),
+    RAFAEL_INTRUMENT("What instrument does Rafael play?", new String[] {"The guitar (basic bitch)", "The saxophone (sax-guy)", "The xylophone"});
 
 
     private static Set<QuestionSelector> removedQuestions = new HashSet<>();

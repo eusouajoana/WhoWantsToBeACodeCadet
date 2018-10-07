@@ -2,7 +2,7 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursui
 
 import java.util.*;
 
-public enum MastersQuestions {
+public enum MastersQuestions implements Question{
 
     FILIPE_CAT_NAME("What does Filipe call his cat?", new String[]{"Lily", "Mix", "Tareco"}),
     FILIPE_SENTENCE("What's Filipe's favorite sentence?", new String[]{"Fasshentido", "Maltinha...", "Ta foder"}),

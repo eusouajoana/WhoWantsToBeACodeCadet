@@ -13,7 +13,7 @@ public class QuestionSelector {
 
 
     // Associar o tipo às suas instâncias
-    private static Map<Type, Enum[]> map;
+    private static Map<Type, Question[]> map;
     private static List<Enum> removedQuestions;
 
     // Criar um mapa que faz essa associação
@@ -36,16 +36,16 @@ public class QuestionSelector {
 
         switch (type) {
             case MASTERS:
-                return ((MastersQuestions) getRandomQuestions(Type.MASTERS)).getAnswers();
+                return (getRandomQuestions(Type.MASTERS)).getAnswers();
 
             case PROGRAMMING_CONCEPTS:
-                return ((ProgrammingConceptsQuestions) getRandomQuestions(Type.PROGRAMMING_CONCEPTS)).getAnswers();
+                return (getRandomQuestions(Type.PROGRAMMING_CONCEPTS)).getAnswers();
 
             case ACADEMIA:
-                return ((AcademiaQuestions) getRandomQuestions(Type.ACADEMIA)).getAnswers();
+                return (getRandomQuestions(Type.ACADEMIA)).getAnswers();
 
             case CODE_CADETS:
-                return ((CodeCadetsQuestions) getRandomQuestions(Type.CODE_CADETS)).getAnswers();
+                return (getRandomQuestions(Type.CODE_CADETS)).getAnswers();
         }
         return null;
     }
@@ -60,14 +60,17 @@ public class QuestionSelector {
 
 
 
-    public static Object getRandomQuestions(Type type) {
+    public static Question getRandomQuestions(Type type) {
         switch (type) {
             case MASTERS:
                 return MastersQuestions.values()[(int) (Math.random() * MastersQuestions.values().length)];
+
             case CODE_CADETS:
                 return CodeCadetsQuestions.values()[(int) (Math.random() * CodeCadetsQuestions.values().length)];
+
             case ACADEMIA:
                 return AcademiaQuestions.values()[(int) (Math.random() * AcademiaQuestions.values().length)];
+
             case PROGRAMMING_CONCEPTS:
                 return ProgrammingConceptsQuestions.values()[(int) (Math.random() * ProgrammingConceptsQuestions.values().length)];
         }

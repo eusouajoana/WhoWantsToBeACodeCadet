@@ -2,7 +2,7 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursui
 
 import java.util.*;
 
-public enum AcademiaQuestions {
+public enum AcademiaQuestions implements Question{
 
     ACADEMY_NAME("What is the correct name of the Academy?", new String[]{"<Academia de Código_>", "<Academia do Código_>", "< Escola do código_>"}),
     BEST_BOOTCAMP("Where's the best bootcamp of <Academia de Código_>?", new String[]{"FUNdão", "TECHceira", "LisBOA and Porto"}),

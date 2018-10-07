@@ -2,7 +2,7 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursui
 
 import java.util.*;
 
-public enum ProgrammingConceptsQuestions {
+public enum ProgrammingConceptsQuestions implements Question{
 
     TRANSISTOR("What's is a transistor?", new String[]{"A device used to amplify or switch electronic signals and electrical power", "Only God knows (and by God I mean master Jorge)", "A little device that acts like a switch"}),
     NAME_THREAD("What's the name of our Thread of detail?", new String[]{"António Castro", "Catarina Campino", "Antoninho"}),
