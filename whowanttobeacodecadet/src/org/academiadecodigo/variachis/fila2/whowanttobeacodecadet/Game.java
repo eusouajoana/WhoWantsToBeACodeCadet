@@ -1,12 +1,6 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.MastersQuestions;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.CodeCadetsQuestions;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.ProgrammingConceptsQuestions;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.RandomQuestions;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
-
-import java.util.List;
 
 public class Game {
 

@@ -1,8 +1,4 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.MastersQuestions;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.CodeCadetsQuestions;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.ProgrammingConceptsQuestions;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.RandomQuestions;
 
 import java.util.*;
 
@@ -28,7 +24,7 @@ public class QuestionSelector {
         map.put(Type.MASTERS, MastersQuestions.values());
         map.put(Type.CODE_CADETS, CodeCadetsQuestions.values());
         map.put(Type.PROGRAMMING_CONCEPTS, ProgrammingConceptsQuestions.values());
-        map.put(Type.RANDOM, RandomQuestions.values());
+        map.put(Type.RANDOM, AcademiaQuestions.values());
     }
 
 
@@ -59,16 +55,16 @@ public class QuestionSelector {
     }
 
 
-    public static  getRandomQuestions(Type type) {
+    public static Question getRandomQuestions(Type type) {
         switch (type) {
             case MASTERS:
-                return MastersQuestions.values()[(int)(Math.random()* MastersQuestions.values().length)];
+                return (Question) MastersQuestions.values()[(int)(Math.random()* MastersQuestions.values().length)];
             case CODE_CADETS:
-                return CodeCadetsQuestions.values()[(int)(Math.random()* CodeCadetsQuestions.values().length)];
+                return (Question)CodeCadetsQuestions.values()[(int)(Math.random()* CodeCadetsQuestions.values().length)];
             case RANDOM:
-                return RandomQuestions.values()[(int)(Math.random()* RandomQuestions.values().length)];
+                return (Question) AcademiaQuestions.values()[(int)(Math.random()* AcademiaQuestions.values().length)];
             case PROGRAMMING_CONCEPTS:
-                return ProgrammingConceptsQuestions.values()[(int)(Math.random()* ProgrammingConceptsQuestions.values().length)];
+                return (Question) ProgrammingConceptsQuestions.values()[(int)(Math.random()* ProgrammingConceptsQuestions.values().length)];
         }
         return null;
     }
