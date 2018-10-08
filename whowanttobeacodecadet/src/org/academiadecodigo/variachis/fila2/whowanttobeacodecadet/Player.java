@@ -23,7 +23,7 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.actualposition = "6e6";
-        this.littleCheese = new LittleCheese(Color.YELLOW);
+        //this.littleCheese = new LittleCheese(Color.YELLOW);
     }
 
 

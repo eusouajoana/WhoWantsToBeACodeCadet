@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
 
         Game game = new Game();
 
@@ -46,17 +46,34 @@ public class Main {
         }
 
 
-        Picture picture = new Picture(10, 10, "/Users/codecadet/Desktop/game-repo/whowanttobeacodecadet/resources/img/Wooden-Desk-Wallpapers-001.jpg");
-        picture.draw();
+        SimpleGfxGrid grid = new SimpleGfxGrid(87, 70);
 
-        SimpleGfxGrid grid = new SimpleGfxGrid(120, 90);
-
-        //SimpleGfxBoard.makeAllBoard();
+        SimpleGfxBoard.makeAllBoard();
 
 
-        LittleCheese littleCheese = new LittleCheese(Color.YELLOW);
+        LittleCheese littleCheese = new LittleCheese(Color.RED);
 
-        littleCheese.translate(70 * 5, -70);
+
+        int[] position = {11, 11};
+
+
+        int[] pos = {1, 1};
+
+        int[] pos1 = {7,1};
+
+
+        littleCheese.move(position);
+
+        Thread.sleep(3500);
+
+        littleCheese.move(pos);
+
+        Thread.sleep(3000);
+
+        littleCheese.move(pos1);
+
+
+        //littleCheese.translate(70 * 5, -70);
 
 
     }

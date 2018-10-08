@@ -10,7 +10,7 @@ public class Canvas {
     private Rectangle grid;
 
 
-    Picture picture = new Picture(10, 10, "/Users/codecadet/Desktop/game-repo/whowanttobeacodecadet/resources/img/Wooden-Desk-Wallpapers-001.jpg");
+    //Picture picture = new Picture(10, 10, "/Users/codecadet/Desktop/game-repo/whowanttobeacodecadet/resources/img/Wooden-Desk-Wallpapers-001.jpg");
 
 
 
