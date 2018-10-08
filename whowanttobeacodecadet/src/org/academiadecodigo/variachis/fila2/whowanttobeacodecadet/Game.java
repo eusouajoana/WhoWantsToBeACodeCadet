@@ -112,10 +112,6 @@ public class Game {
 
     public boolean isGameWinner(Player player) {
         if (player.isWinner()) {
-
-            /*Text text = new Text(20, 30, player.getName() + ": I'm the winner");
-            text.setColor(Color.BLACK);
-            text.draw();*/
             return this.gameWinner = true;
         }
         return gameWinner = false;
