@@ -24,7 +24,7 @@ public enum MastersQuestions implements Question{
     GAME_JORGE("What was the name of Master Jorge's game in his bootcamp?", new String[] {"Tanks", "SingStar", "Doom"}),
     PUSSY("What's the pussiest thing ever?", new String[] {"Using the mouse to copy a file", "Being afraid of Master Jorge's 'you're a donkey' look", "Saying Windows is better than Linux"}),
     SID_BIRTHDAY("When is Master Sid's birthday?", new String[] {"13th February", "15th March", "20th June"}),
-    SERINGAS_BIRTHDAY("", new String[] {"", "", ""}),
+    SERINGAS_BIRTHDAY("When is Master Seringa's birthday?", new String[] {"12th May", "28th March", "5th April"}),
     FILIPE_BIRTHDAY("When is Master Filipe's birthday?", new String[] {"19th September", "20th Sepetember", "18th September"}),
     JORGE_BIRTHDAY("", new String[] {"", "", ""}),
     FEMALE_MASTERS("How many female Master Coders are there in <Academia de Código_>?", new String[] {"1", "2", "3"}),

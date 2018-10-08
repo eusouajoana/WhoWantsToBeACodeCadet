@@ -19,6 +19,7 @@ public class Square {
 
     //ID of the square
     private int[] id;
+    private boolean special;
 
 
     //------------- Constructor -------------------------
@@ -51,6 +52,13 @@ public class Square {
 
     public QuestionSelector.Type getCategory() {
         return category;
+    }
+
+    public void setSpecial(boolean special) {
+        this.special = special;
+    }
+    public boolean isSpecial(){
+        return special;
     }
 }
 

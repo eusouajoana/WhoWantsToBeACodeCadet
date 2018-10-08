@@ -46,6 +46,11 @@ public class Board {
                     square.getNeighboursList().add(rightNeighbour);
                     square.getNeighboursList().add(downNeighbour);
 
+                    //setting special squares
+                    if(key.equals("6e1") || key.equals("1e6") || key.equals("11e6") || key.equals("6e11")){
+                        square.setSpecial(true);
+                    }
+
                     //putting square in the map
                     squareMap.put(key, square);
                     continue;
@@ -173,11 +178,11 @@ public class Board {
     }
 
     //Method to transform String key Position in a int array
-    public List<Integer> transformKeyPosition(String key){
+    public Integer[] transformKeyPosition(String key){
 
         String[] keyTransform = key.split("");
         System.out.println(keyTransform[0] + " " + keyTransform[1] + " " + keyTransform[2]);
-        List<Integer> squarePosition = new LinkedList<>();
+        Queue<Integer> squarePosition = new LinkedList<>();
         squarePosition.clear();
 
         for(int i = 0; i < keyTransform.length; i++){
@@ -187,10 +192,9 @@ public class Board {
             int num = Integer.parseInt(keyTransform[i]);
             squarePosition.add(num);
         }
-
+        Integer[] position = new Integer[2];
         System.out.println(squarePosition);
-
-        return squarePosition;
+        return squarePosition.toArray(position);
     }
 
     public void settingSquaresCategory(){

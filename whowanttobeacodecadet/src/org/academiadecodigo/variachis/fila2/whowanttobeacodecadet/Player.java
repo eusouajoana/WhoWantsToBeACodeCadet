@@ -1,10 +1,11 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Dice;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.LittleCheese;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Cheese;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Dice;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,17 +15,17 @@ public class Player {
     private boolean winner;
     private boolean rightAnswer;
     private String actualposition;
-    private LittleCheese littleCheese;
+    private Cheese cheese;
+    private Set<QuestionSelector.Type> littleCheese;
 
 
     //Constructor
     public Player(String name) {
         this.name = name;
         this.actualposition = "6e6";
-        //this.littleCheese = new LittleCheese(Color.YELLOW);
+        this.littleCheese = new HashSet<>();
+        this.cheese = name.equals("player1") ? new Cheese(Color.PINK) : new Cheese(Color.LIGHT_GRAY);
     }
-
-
 
 
     public String getName() {
@@ -48,7 +49,7 @@ public class Player {
 
 
     public boolean isWinner() {
-        if (score == 10) {
+        if (littleCheese.size() == 4) {
             return winner = true;
         }
         return false;
@@ -83,5 +84,14 @@ public class Player {
 
     public String getActualposition() {
         return actualposition;
+    }
+
+    public void winCheese(QuestionSelector.Type type) {
+        cheese.paintLittleCheese(type);
+        littleCheese.add(type);
+    }
+
+    public Cheese getCheese() {
+        return cheese;
     }
 }

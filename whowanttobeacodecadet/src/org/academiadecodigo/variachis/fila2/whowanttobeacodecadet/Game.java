@@ -50,6 +50,9 @@ public class Game {
                 actualPosition = player.getActualposition();
                 System.out.println(player.getName() + " New Position: " + actualPosition);
 
+                //Move cheese to actual position
+                player.getCheese().move(board.transformKeyPosition(actualPosition));
+
                 //Question Category according to the actual position of Player
                 Square square = board.getSquareMap().get(player.getActualposition());
                 QuestionSelector.Type category = square.getCategory();
@@ -63,6 +66,11 @@ public class Game {
 
                 //player choose uma answer random de todas as answers possíveis
                 String answer = player.choose(question.getAnswers());
+
+                //Seeing if the square is special, win a cheese
+                if(square.isSpecial() && answer.equals(question.getRightAnswer())){
+                    player.winCheese(category);
+                }
 
 
                 //enquanto a resposta for certa e não chegar a score 10 (winner)
@@ -87,6 +95,9 @@ public class Game {
                     actualPosition = player.getActualposition();
                     System.out.println(player.getName() + " New Position: " + actualPosition);
 
+                    //Move cheese to actual position
+                    player.getCheese().move(board.transformKeyPosition(actualPosition));
+
                     //Question Category according to the actual position of Player
                     square = board.getSquareMap().get(player.getActualposition());
                     category = square.getCategory();
@@ -96,6 +107,11 @@ public class Game {
                     System.out.println(question.getStatement());
                     System.out.println(question.getAnswers());
                     answer = player.choose(question.getAnswers());
+
+                    //Seeing if the square is special, win a cheese
+                    if(square.isSpecial() && answer.equals(question.getRightAnswer())){
+                        player.winCheese(category);
+                    }
 
                     String[] array = new String[3];
                     question.getAnswers().toArray(array);
