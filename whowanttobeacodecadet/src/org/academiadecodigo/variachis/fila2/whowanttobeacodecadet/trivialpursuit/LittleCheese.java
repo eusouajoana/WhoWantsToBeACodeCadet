@@ -15,7 +15,7 @@ public class LittleCheese implements Movable {
     private Player player;
 
     //constructor for the cheese
-    public LittleCheese(Player player, Color color) {
+    public LittleCheese(Color color) {
         outerRectangle = new Rectangle(578, 462, 45, 45);
         outerRectangle.setColor(color);
         outerRectangle.fill();
@@ -49,7 +49,5 @@ public class LittleCheese implements Movable {
         }
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
+
 }

@@ -1,6 +1,8 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
+
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.LittleCheese;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.SimpleGfxBoard;
@@ -25,11 +27,11 @@ public class Main {
         int dice = board.getDice().rollDice();
         board.paths("6e6",dice);
         */
-       //Test player changing position
-            //System.out.println("Player :"+ game.getPlayers()[i].getName()+ " Actual Position : " + game.getPlayers()[i].getActualposition());
+        //Test player changing position
+        //System.out.println("Player :"+ game.getPlayers()[i].getName()+ " Actual Position : " + game.getPlayers()[i].getActualposition());
 
         int x = 3;
-        while(x > 0) {
+        while (x > 0) {
             for (int i = 0; i < game.getPlayers().length; i++) {
                 String actualPlace = game.getPlayers()[i].getActualposition();
                 System.out.println("Actualplace : " + actualPlace);
@@ -44,10 +46,17 @@ public class Main {
         }
 
 
-       SimpleGfxGrid grid = new SimpleGfxGrid(120, 90);
+        Picture picture = new Picture(10, 10, "/Users/codecadet/Desktop/game-repo/whowanttobeacodecadet/resources/img/Wooden-Desk-Wallpapers-001.jpg");
+        picture.draw();
+
+        SimpleGfxGrid grid = new SimpleGfxGrid(120, 90);
 
         //SimpleGfxBoard.makeAllBoard();
 
+
+        LittleCheese littleCheese = new LittleCheese(Color.YELLOW);
+
+        littleCheese.translate(70 * 5, -70);
 
 
     }

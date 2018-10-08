@@ -23,19 +23,10 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.actualposition = "6e6";
-        this.littleCheese = new LittleCheese();
-        setCheeseColor();
+        this.littleCheese = new LittleCheese(Color.YELLOW);
     }
 
 
-    //color of the cheese, according to player
-    public void setCheeseColor() {
-        if (name.equals("player1")) {
-            littleCheese.setColor(Color.YELLOW);
-            return;
-        }
-        littleCheese.setColor(Color.ORANGE);
-    }
 
 
     public String getName() {
