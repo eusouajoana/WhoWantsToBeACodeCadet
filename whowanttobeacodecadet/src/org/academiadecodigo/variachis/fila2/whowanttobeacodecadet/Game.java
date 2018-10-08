@@ -47,7 +47,8 @@ public class Game {
 
                 //player choose a path
                 player.choosePath(possiblePaths);
-                System.out.println(player.getName() + " New Position: " + player.getActualposition());
+                actualPosition = player.getActualposition();
+                System.out.println(player.getName() + " New Position: " + actualPosition);
 
                 //Question Category according to the actual position of Player
                 Square square = board.getSquareMap().get(player.getActualposition());
@@ -57,6 +58,8 @@ public class Game {
                 //dar uma pergunta random da categoria da Posição do Player
                 Question question = QuestionSelector.getRandomQuestions(category);
                 System.out.println(question.getStatement());
+
+                System.out.println(question.getAnswers());
 
                 //player choose uma answer random de todas as answers possíveis
                 String answer = player.choose(question.getAnswers());
@@ -81,14 +84,21 @@ public class Game {
                     possiblePaths.addAll(board.paths(actualPosition,dice));
                     //player choose a path
                     player.choosePath(possiblePaths);
-                    System.out.println(player.getName() + " New Position: " + player.getActualposition());
+                    actualPosition = player.getActualposition();
+                    System.out.println(player.getName() + " New Position: " + actualPosition);
 
-
-                    category = QuestionSelector.randomCategory();
+                    //Question Category according to the actual position of Player
+                    square = board.getSquareMap().get(player.getActualposition());
+                    category = square.getCategory();
                     System.out.println("New category: " + category);
+
                     question = QuestionSelector.getRandomQuestions(category);
                     System.out.println(question.getStatement());
+                    System.out.println(question.getAnswers());
                     answer = player.choose(question.getAnswers());
+
+                    String[] array = new String[3];
+                    question.getAnswers().toArray(array);
                 }
 
                 if (isGameWinner(player)) {
