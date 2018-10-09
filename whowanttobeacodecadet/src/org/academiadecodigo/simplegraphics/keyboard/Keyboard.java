@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Instantiate a Keyboard for obtaining key handling capability
+ * Instantiate a GameKeyboard for obtaining key handling capability
  */
 public class Keyboard implements KeyListener {
 
@@ -29,7 +29,7 @@ public class Keyboard implements KeyListener {
     }
 
     /**
-     * Add a new Keyboard event listener
+     * Add a new GameKeyboard event listener
      *
      * @param keyboardEvent the event to add
      */
@@ -38,7 +38,7 @@ public class Keyboard implements KeyListener {
     }
 
     /**
-     * Remove an existing Keyboard event listener
+     * Remove an existing GameKeyboard event listener
      *
      * @param keyboardEvent the event to remove
      */
