@@ -2,9 +2,26 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursui
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.Grid;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.position.GridPosition;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 public class SimpleGfxBoard {
 
+    private Board board;
+    private Cheese cheese;
+
+    private int xRectangle = 418;
+    private int yRectangle = 423;
+    private int cellsize = 53;
+    private Rectangle movableRectangle = new Rectangle(xRectangle, yRectangle, cellsize, cellsize);
+
+    public SimpleGfxBoard(Board board) {
+        this.board = board;
+    }
 
     //create the graphics board
 
@@ -276,4 +293,37 @@ public class SimpleGfxBoard {
         makeBoardCenterCenter();
         makeBoardCenterDown();
     }
+
+
+    public void highlight(Set<String> paths) {
+
+        List<Integer[]> positions = new LinkedList<>();
+
+        for (String path : paths) {
+            Integer[] position = board.transformKeyPosition(path);
+            positions.add(position);
+        }
+
+        for (Integer[] position : positions) {
+            if (position == null) {
+                continue;
+            }
+            conversion(position);
+        }
+
+    }
+
+
+    public void conversion(Integer[] possiblePositions) {
+        int row = possiblePositions[0];
+        int col = possiblePositions[1];
+
+        int x = (147 - cellsize) + col * 54;
+        int y = (152 - cellsize) + row * 54;
+
+        Rectangle rectangle = new Rectangle(x, y, cellsize, cellsize);
+        rectangle.setColor(Color.YELLOW);
+        rectangle.draw();
+    }
+
 }

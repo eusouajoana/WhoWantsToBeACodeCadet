@@ -3,7 +3,7 @@ package org.academiadecodigo.simplegraphics.keyboard;
 import java.awt.event.KeyEvent;
 
 /**
- * Keyboard events containing key codes and event types
+ * GameKeyboard events containing key codes and event types
  */
 public class KeyboardEvent {
 
@@ -13,6 +13,7 @@ public class KeyboardEvent {
     public static final int KEY_RIGHT = KeyEvent.VK_RIGHT;
     public static final int KEY_UP = KeyEvent.VK_UP;
     public static final int KEY_DOWN = KeyEvent.VK_DOWN;
+    public static final int KEY_ENTER = KeyEvent.VK_ENTER;
 
     /** Numbers */
     public static final int KEY_0 = KeyEvent.VK_0;

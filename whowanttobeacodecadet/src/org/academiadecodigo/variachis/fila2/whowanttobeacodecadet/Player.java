@@ -89,6 +89,7 @@ public class Player {
     public void winCheese(QuestionSelector.Type type) {
         cheese.paintLittleCheese(type);
         littleCheese.add(type);
+        isWinner();
     }
 
     public Cheese getCheese() {

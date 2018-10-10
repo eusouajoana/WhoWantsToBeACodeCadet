@@ -180,8 +180,8 @@ public class Board {
     //Method to transform String key Position in a int array
     public Integer[] transformKeyPosition(String key){
 
-        String[] keyTransform = key.split("");
-        System.out.println(keyTransform[0] + " " + keyTransform[1] + " " + keyTransform[2]);
+        String[] keyTransform = key.split("e");
+        System.out.println(keyTransform[0] + " " + keyTransform[1]);
         Queue<Integer> squarePosition = new LinkedList<>();
         squarePosition.clear();
 

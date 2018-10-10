@@ -21,7 +21,9 @@ public class Main {
 
 
 
-        //SimpleGfxBoard.makeAllBoard();
+       // SimpleGfxBoard.makeAllBoard();
+        SimpleGfxBoard sboard = new SimpleGfxBoard(game.getBoard());
+        sboard.highlight(game.getBoard().paths("1e6",5));
 
 
         //Cheese cheese = new Cheese(Color.RED);
