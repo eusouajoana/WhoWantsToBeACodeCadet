@@ -16,7 +16,7 @@ public class Main {
 
       //  Game game = new Game();
        //SimpleGfxGrid grid = new SimpleGfxGrid(87, 70);
-        GfxDice.printDice(5);
+        //GfxDice.printDice(5);
       //  game.getBoard().transformKeyPosition("6e6");
         //System.out.println(game.getBoard().getSquareMap().get("1e1").getCategory());
 

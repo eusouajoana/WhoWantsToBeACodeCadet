@@ -8,6 +8,7 @@ import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Dice;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,6 +25,7 @@ public class Player {
     private Set<String> possiblePaths;
     private Integer[] currentPosition;
     private String answer;
+    private boolean answered;
 
 
     //Constructor
@@ -42,10 +44,17 @@ public class Player {
 
 
     public boolean isRightAnswer() {
-        score++;
-        System.out.println(score);
-        return rightAnswer = true;
+        return rightAnswer;
     }
+
+    public void setWrongAnswer(){
+        rightAnswer = false;
+    }
+
+    public void setRightAnswer(){
+        rightAnswer = true;
+    }
+
 
 
     public String choose(List<String> answers) {
@@ -71,8 +80,11 @@ public class Player {
     //Player can choose his path according to the dice result
     //TODO transform this method to choose through keyboard!!!
     public void choosePath(Integer[] currentPosition) {
-
-        actualposition = currentPosition[0] + "e" + currentPosition[1];
+        System.out.println("actual" + actualposition);
+        System.out.println("current position 0:" + currentPosition[0]);
+        actualposition =
+                currentPosition[0] + "e"
+                        + currentPosition[1];
 
     }
 
@@ -97,11 +109,13 @@ public class Player {
 
 
     public void setPossiblePaths(Set<String> possiblePaths) {
+        System.out.println("player: " + this.getName() + " " + possiblePaths);
         this.possiblePaths = possiblePaths;
     }
 
 
     public Set<String> getPossiblePaths() {
+        System.out.println("player: " + this.getName() + " " + possiblePaths);
         return possiblePaths;
     }
 
@@ -121,5 +135,13 @@ public class Player {
 
     public String getAnswer() {
         return answer;
+    }
+
+    public void setAnswered(boolean answered) {
+        this.answered = answered;
+    }
+
+    public boolean isAnswered() {
+        return answered;
     }
 }

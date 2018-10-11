@@ -29,7 +29,7 @@ public class Game {
     private Keyboard keyboard;
     private int currentPlayer = -1;
     private GfxDice gfxDice = new GfxDice();
-    private int index = -1;
+    private int index;
     private QuestionsGfx questionsGfx = new QuestionsGfx();
 
     //Constructor
@@ -40,6 +40,7 @@ public class Game {
         this.board = new Board();
         this.board.settingSquaresCategory();
         this.simpleGfxBoard = new SimpleGfxBoard(board);
+        this.index = 0;
     }
 
 
@@ -102,27 +103,27 @@ public class Game {
 
         int diceValue = players[currentPlayer].rollDice();
 
-        try {
+      /*  try {
             GfxDice.printDice(diceValue);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        } */
 
         String actualPosition = getCurrentPlayer().getActualposition();
-        System.out.println(getCurrentPlayer().getName() + " Actual position : " + getCurrentPlayer().getActualposition());
 
         Set<String> possiblePaths = new HashSet<>();
         possiblePaths.addAll(board.paths(actualPosition, diceValue));
-        getCurrentPlayer().setPossiblePaths(possiblePaths);
+        getCurrentPlayer().setPossiblePaths(board.paths(actualPosition,diceValue));
 
         simpleGfxBoard.highlight(possiblePaths);
-
+        simpleGfxBoard.cursorInitialPosition(possiblePaths);
+        System.out.println("dice do game" + diceValue);
         return diceValue;
     }
 
 
     public Player nextPlayer() {
-        currentPlayer = currentPlayer + 1 == players.length ? 0 : currentPlayer + 1;
+        currentPlayer = currentPlayer + 1 == (players.length - 1) ? 0 : currentPlayer + 1;
         return getCurrentPlayer();
     }
 
@@ -132,37 +133,53 @@ public class Game {
 
 
     public void movePlayerToNext(Player player) {
-        List<Integer[]> possiblePaths = new LinkedList<>();
+        List<Integer[]> possiblePathsList = new LinkedList<>();
 
+        System.out.println(player.getName());
         for (String path : player.getPossiblePaths()) {
             Integer[] position = board.transformKeyPosition(path);
-            possiblePaths.add(position);
+            possiblePathsList.add(position);
         }
-        if (!(index == possiblePaths.size() - 1)) {
-            player.setCurrentPosition(possiblePaths.get(++index));
+
+
+
+        if (!(index == possiblePathsList.size() - 1)) {
+            Integer[] nextPosition = possiblePathsList.get(++index);
+
+            System.out.println("entrei no if!!");
+            //player.setCurrentPosition(possiblePathsList.get(++index));
+            simpleGfxBoard.moveCursor(nextPosition);
+            player.setCurrentPosition(nextPosition);
         }
     }
 
 
     public void movePlayerToPrevious(Player player) {
-        List<Integer[]> possiblePaths = new LinkedList<>();
+        List<Integer[]> possiblePathsList = new LinkedList<>();
 
         for (String path : player.getPossiblePaths()) {
             Integer[] position = board.transformKeyPosition(path);
-            possiblePaths.add(position);
+            possiblePathsList.add(position);
         }
-        if ((index > 0)) {
-            player.setCurrentPosition(possiblePaths.get(--index));
+
+        if (!(index == 0)) {
+            Integer[] nextPosition = possiblePathsList.get(--index);
+
+            System.out.println("entrei no if!!");
+            //player.setCurrentPosition(possiblePathsList.get(++index));
+            simpleGfxBoard.moveCursor(nextPosition);
+            player.setCurrentPosition(nextPosition);
         }
+
     }
 
-    public void choosePath(Player player) {
+    public void choosePathGame(Player player) {
         //player choose a path
         player.choosePath(player.getCurrentPosition());
         String actualPosition = player.getActualposition();
         System.out.println(player.getName() + " New Position: " + actualPosition);
 
-        //  player.choosePath();
+        //  player.choosePathGame();
         player.moveCheese(board);
     }
 
@@ -191,6 +208,12 @@ public class Game {
         if (square.isSpecial() && answer.equals(question.getRightAnswer())) {
             player.winCheese(square.getCategory());
         }
+
+        getCurrentPlayer().setAnswered(true);
+    }
+
+    public int getIntCurrentPlayer(){
+        return currentPlayer;
     }
 
 }

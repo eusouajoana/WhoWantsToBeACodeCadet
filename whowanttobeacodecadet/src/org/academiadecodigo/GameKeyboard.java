@@ -1,16 +1,14 @@
 package org.academiadecodigo;
 
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Game;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Player;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Questions.Question;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.GfxDice;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.SimpleGfxBoard;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.Grid;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.SimpleGfxGrid;
 
 public class GameKeyboard implements KeyboardHandler {
@@ -19,10 +17,18 @@ public class GameKeyboard implements KeyboardHandler {
     private Game game;
     private Player player;
     private SimpleGfxBoard simpleGfxBoard;
+    private Rectangle cursor;
+    private GfxDice gfxDice;
+    private boolean firstTurn;
 
 
     public GameKeyboard() {
         this.game = new Game();
+        this.gfxDice = new GfxDice();
+        game.nextPlayer();
+        this.player = game.getCurrentPlayer();
+        this.firstTurn = true;
+
     }
 
 
@@ -94,19 +100,27 @@ public class GameKeyboard implements KeyboardHandler {
                     return;
                 }
 
-                game.nextPlayer();
-                //game.rollDice();
-                try{
-                    GfxDice.printDice(game.rollDice());
-                } catch (InterruptedException e){
-                    e.printStackTrace();
+
+                if(game.getIntCurrentPlayer() == -1 || !game.getCurrentPlayer().isRightAnswer()) {
+                    game.nextPlayer();
                 }
 
-                break;
+                if(game.getCurrentPlayer().isAnswered() || firstTurn) {
 
+                    try {
+                        gfxDice.printDice(game.rollDice());
+                        firstTurn = false;
+                        game.getCurrentPlayer().setAnswered(false);
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
             case KeyboardEvent.KEY_ENTER:
-                game.choosePath(player);
+                game.choosePathGame(player);
                 game.showQuestion(player);
+                
                 break;
 
             case KeyboardEvent.KEY_1:

@@ -17,10 +17,14 @@ public class SimpleGfxBoard {
     private int xRectangle = 418;
     private int yRectangle = 423;
     private int cellsize = 53;
-    private Rectangle movableRectangle = new Rectangle(xRectangle, yRectangle, cellsize, cellsize);
+    private Rectangle cursor;
+    private int cursorRow;
+    private int cursorCol;
 
     public SimpleGfxBoard(Board board) {
         this.board = board;
+        //this.cursor = new Rectangle(xRectangle, yRectangle, cellsize, cellsize);
+        //cursor.setColor(Color.BLACK);
     }
 
     //create the graphics board
@@ -326,4 +330,46 @@ public class SimpleGfxBoard {
         rectangle.draw();
     }
 
+    public void cursorInitialPosition(Set<String> paths){
+        List<Integer[]> positions = new LinkedList<>();
+
+        for (String path : paths) {
+            Integer[] position = board.transformKeyPosition(path);
+            positions.add(position);
+        }
+
+        Integer[] cursorPosition = positions.get(0);
+        this.cursorRow = cursorPosition[0];
+        this.cursorCol = cursorPosition[1];
+
+        int x = (147 - cellsize) + cursorCol * 54;
+        int y = (152 - cellsize) + cursorRow * 54;
+
+        this.cursor = new Rectangle(x,y,cellsize,cellsize);
+        cursor.setColor(Color.BLACK);
+        cursor.fill();
+
+    }
+
+    public Rectangle getCursor() {
+        return cursor;
+    }
+
+    public void moveCursor(Integer[] nextPosition){
+
+        int previousRow = cursorRow;
+        int previousCol = cursorCol;
+        int row = nextPosition[0];
+        int col = nextPosition[1];
+
+        int y = (row - previousRow) * 54;
+        int x = (col - previousCol) * 54;
+
+        cursor.translate(x, y);
+
+        this.cursorRow = nextPosition[0];
+        this.cursorCol = nextPosition[1];
+
+
+    }
 }

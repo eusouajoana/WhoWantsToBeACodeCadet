@@ -6,7 +6,7 @@ public enum ProgrammingConceptsQuestions implements Question{
 
     TRANSISTOR("What's is a transistor?", new String[]{"A device used to amplify or switch electronic signals and electrical power", "Only God knows (and by God I mean master Jorge)", "A little device that acts like a switch"}),
     NAME_THREAD("What's the name of our Thread of detail?", new String[]{"António Castro", "Catarina Campino", "Antoninho"}),
-    SIGNAL("What's the main advantage of difference of digital signals over analog signals?", new String[]{" Immunity to noise interference", "More quality of sound or image", "It's the fucking same"}),
+    SIGNAL("What's the main advantage of digital signals over analog signals?", new String[]{" Immunity to noise interference", "More quality of sound or image", "It's the fucking same"}),
     NAME_HEAD("What's the name of our Head of detail?", new String[]{"Catarina Campino", "António Castro", "Rui Ferrão"}),
     ELECTRIC_CURRENT("What is the definition of electric current?", new String[]{"A flow of electric charge.", "Electrons and protons travelling in space", "Neutrons being neutral"}),
     BINARY("How do we write the number 69 in binary?", new String[]{"01000101", "10010100", "01011010"}),
@@ -31,7 +31,7 @@ public enum ProgrammingConceptsQuestions implements Question{
     EXCEPTION("What is an Exception?", new String[]{"An abnormal event which occurs during the execution of a program and disrupts its normal flow", "The things that confirm the rule", "An error"}),
     BRACKETS("What is the true name of these symbols: < > ?", new String[]{"Diamond Brackets", "Diamond Operators", "Angle brackets"}),
     JAVA("What type of language is Java?", new String[]{"Compiled/Interpreted", "Compiled", "Interpreted"}),
-    JVM("What is the JVM?", new String[]{"Your new best friend", "A virtual machine that enables a computer to run Java programs as well as programs written in other languages and compiled to Java bytecode", "Witchcraft"}),
+    //JVM("What is the JVM?", new String[]{"Your new best friend", "A virtual machine that enables a computer to run Java programs as well as programs written in other languages and compiled to Java bytecode", "Witchcraft"}),
     STRING("Which of these is a String?", new String[]{"'2'", "True", "Java"}),
     ARRAY("What is an array?", new String[]{"A container object that holds a fixed number of values of a single type", "A cool place where you can hold many variables", "The super class of QuimbARRAYers"}),
     INTERFACE("What is an interface?", new String[]{"Polymorphism on steroids", "Stuff you can implement in your classes", "Gifts from the misters of Java"}),

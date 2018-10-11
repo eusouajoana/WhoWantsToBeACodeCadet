@@ -34,32 +34,27 @@ public class QuestionsGfx {
         rect1.draw();
         rect1.fill();
 
-        //Text text4 = new Text(540, 600, category.toString() );
-        Text text4 = new Text(210, 370, "CATEGORIA FIXE");
+        Text text4 = new Text(210, 370, category.toString() );
         text4.setColor(Color.CYAN);
         text4.draw();
         text4.grow(19, 15);
 
-        //Text text = new Text(540, 650, question.getStatement());
-        Text text = new Text(210, 400, "Quem faz o melhor arroz de cona?");
+        Text text = new Text(210, 400, question.getStatement() + "\n TEEESSSTT");
         text.setColor(Color.YELLOW);
         text.draw();
         text.grow(10, 8);
 
-        //Text text1 = new Text(540, 680, "1." + answers[0]);
-        Text text1 = new Text(210, 440, "1. A tua prima");
+        Text text1 = new Text(210, 440, "1." + answers[0]);
         text1.setColor(Color.YELLOW);
         text1.draw();
         text1.grow(8, 7);
 
-        //Text text2 = new Text(540, 710, "2." + answers[1]);
-        Text text2 = new Text(210, 480, "2. A tua mãe");
+        Text text2 = new Text(210, 480, "2." + answers[1]);
         text2.setColor(Color.YELLOW);
         text2.draw();
         text2.grow(8, 7);
 
-        //Text text3 = new Text(540, 740, "3." + answers[2]);
-        Text text3 = new Text(210, 520, "3. O Jorge");
+        Text text3 = new Text(210, 520, "3." + answers[2]);
         text3.setColor(Color.YELLOW);
         text3.draw();
         text3.grow(8, 7);

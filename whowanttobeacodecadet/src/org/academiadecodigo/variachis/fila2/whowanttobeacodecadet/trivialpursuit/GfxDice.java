@@ -11,7 +11,7 @@ public class GfxDice {
     private Picture dice5;
     private Picture dice6; */
 
-    public static void printDice(int diceResult) throws InterruptedException {
+    public void printDice(int diceResult) throws InterruptedException {
 
         Picture dice1 = new Picture(20, 20, "/img/dice-six-faces-one.png");
         dice1.grow(-220,-220);
@@ -39,7 +39,7 @@ public class GfxDice {
 
 
         //Rolling Dice Effect
-        int x = 5;
+        /*int x = 3;
         while(x > 0){
             dice1.draw();
             Thread.sleep(200);
@@ -61,35 +61,35 @@ public class GfxDice {
             dice6.delete();
 
             x--;
-        }
+        } */
 
 
 
         //Showing Result
         switch(diceResult){
             case 1: dice1.draw();
-                Thread.sleep(5000);
-                dice1.delete();
+                //Thread.sleep(2000);
+                //dice1.delete();
                 break;
             case 2: dice2.draw();
-                Thread.sleep(5000);
-                dice2.delete();
+                //Thread.sleep(2000);
+                //dice2.delete();
                 break;
             case 3: dice3.draw();
-                Thread.sleep(5000);
-                dice3.delete();
+                //Thread.sleep(2000);
+                //dice3.delete();
                 break;
             case 4: dice4.draw();
-                Thread.sleep(5000);
-                dice4.delete();
+                //Thread.sleep(2000);
+                //dice4.delete();
                 break;
             case 5: dice5.draw();
-                Thread.sleep(5000);
-                dice5.delete();
+                //Thread.sleep(2000);
+                //dice5.delete();
                 break;
             default: dice6.draw();
-                Thread.sleep(5000);
-                dice6.delete();
+                //Thread.sleep(2000);
+                //dice6.delete();
 
         }
 
