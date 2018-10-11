@@ -1,42 +1,42 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 
-import java.util.Set;
+import org.academiadecodigo.GameKeyboard;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.GfxDice;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Cheese;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.SimpleGfxBoard;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.SimpleGfxGrid;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        Game game = new Game();
+        //SimpleGfxGrid initialScreen = new SimpleGfxGrid(30 ,30);
 
-        game.start();
+      //  Game game = new Game();
+       //SimpleGfxGrid grid = new SimpleGfxGrid(87, 70);
+        GfxDice.printDice(5);
+      //  game.getBoard().transformKeyPosition("6e6");
+        //System.out.println(game.getBoard().getSquareMap().get("1e1").getCategory());
 
 
-        //Trivial Pursuit Board Logic
 
-        /*
-        Board board = new Board();
-        board.position();
-        int dice = board.getDice().rollDice();
-        board.paths("6e6",dice);
-        */
-       //Test player changing position
-            //System.out.println("Player :"+ game.getPlayers()[i].getName()+ " Actual Position : " + game.getPlayers()[i].getActualposition());
+       // SimpleGfxBoard.makeAllBoard();
+     //   SimpleGfxBoard sboard = new SimpleGfxBoard(game.getBoard());
+        //sboard.highlight(game.getBoard().paths("1e6",5));
 
-        int x = 3;
-        while(x > 0) {
-            for (int i = 0; i < game.getPlayers().length; i++) {
-                String actualPlace = game.getPlayers()[i].getActualposition();
-                System.out.println("Actualplace : " + actualPlace);
-                int dice1 = game.getPlayers()[i].rollDice();
-                System.out.println("dice : " + dice1);
-                Set<String> paths = game.getBoard().paths(actualPlace, dice1);
-                game.getPlayers()[i].choosePath(paths);
 
-                System.out.println("Player :" + game.getPlayers()[i].getName() + " " + game.getPlayers()[i].getActualposition());
-            }
-            x--;
-        }
+        //Cheese cheese = new Cheese(Color.RED)
+
+
+        GameKeyboard k = new GameKeyboard();
+
+
+        k.keyboardInit();
+
+       // k.keyPressed();
+
 
 
     }

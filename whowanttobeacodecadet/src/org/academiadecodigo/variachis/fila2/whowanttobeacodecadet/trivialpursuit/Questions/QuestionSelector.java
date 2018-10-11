@@ -81,11 +81,13 @@ public class QuestionSelector {
 
     public static Type randomCategory() {
         // Enfiar todas as classes numa lista
-        List<Type> values = new LinkedList<>(map.keySet());
-        int randomNumber = (int) (Math.random() * values.size());
+        //List<Type> values = new LinkedList<>(map.keySet());
+        //List<Type> values = new LinkedList<>();
+        Type[] value = Type.values();
+        int randomNumber = (int) (Math.random() * value.length);
 
         // Tirar uma classe random da lista
-        return values.get(randomNumber);
+        return value[randomNumber];
 
     }
 
