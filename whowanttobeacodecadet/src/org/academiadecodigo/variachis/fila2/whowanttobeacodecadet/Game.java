@@ -1,5 +1,9 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.GfxDice;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.Question;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
@@ -7,8 +11,10 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.SimpleGfxBoard;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Square;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.QuestionsGfx;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -20,30 +26,20 @@ public class Game {
     private boolean gameWinner = false;
     private boolean started;
     private SimpleGfxBoard simpleGfxBoard;
+    private Keyboard keyboard;
+    private int currentPlayer = -1;
+    private GfxDice gfxDice = new GfxDice();
+    private int index = -1;
+    private QuestionsGfx questionsGfx = new QuestionsGfx();
 
     //Constructor
     public Game() {
-        Player player1 = new Player("player1");
-        Player player2 = new Player("player2");
+        Player player1 = new Player("Player 1");
+        Player player2 = new Player("Player 2");
         this.players = new Player[]{player1, player2};
         this.board = new Board();
         this.board.settingSquaresCategory();
         this.simpleGfxBoard = new SimpleGfxBoard(board);
-
-        //teste
-        simpleGfxBoard.highlight(board.paths("6e6",5));
-    }
-
-
-    public void start() {
-
-        //Enquanto não houver um vencedor
-        while (!gameWinner) {
-            //para cada player
-            for (Player player : players) {
-                turn(player);
-            }
-        }
     }
 
 
@@ -75,51 +71,23 @@ public class Game {
     }
 
 
-    public void turn(Player player) {
-        String actualPosition = player.getActualposition();
-        System.out.println(player.getName() + " Actual position : " + player.getActualposition());
-        int dice = player.rollDice();
+    public void turn(Player player, Question question) {
 
-        //board offer the possible paths to choose for the player
-        Set<String> possiblePaths = new HashSet<>();
-        possiblePaths.addAll(board.paths(actualPosition, dice));
+        if (!player.getAnswer().equals(question.getRightAnswer())) {
+            //show animation saying player got the wrong answer
+            nextPlayer();
+            return;
+        }
 
-        //player choose a path
-        player.choosePath(possiblePaths);
-        actualPosition = player.getActualposition();
-        System.out.println(player.getName() + " New Position: " + actualPosition);
 
-        //Move cheese to actual position
-        player.getCheese().move(board.transformKeyPosition(actualPosition));
+        if (player.getAnswer().equals(question.getRightAnswer()) && !player.isWinner()) {
 
-        //Question Category according to the actual position of Player
-        Square square = board.getSquareMap().get(player.getActualposition());
-        QuestionSelector.Type category = square.getCategory();
-        System.out.println("New category: " + category);
-
-        //dar uma pergunta random da categoria da Posição do Player
-        Question question = QuestionSelector.getRandomQuestions(category);
-        System.out.println(question.getStatement());
-
-        System.out.println(question.getAnswers());
-
-        //player choose uma answer random de todas as answers possíveis
-        String answer = player.choose(question.getAnswers());
-
-        //Seeing if the square is special, win a cheese
-        if (square.isSpecial() && answer.equals(question.getRightAnswer())) {
-            player.winCheese(category);
         }
 
         if (isGameWinner(player)) {
             win(player);
             return;
         }
-
-        if (answer.equals(question.getRightAnswer()) && !player.isWinner()) {
-            turn(player);
-        }
-
 
     }
 
@@ -128,5 +96,101 @@ public class Game {
         System.out.println(player.getName() + ": you win!");
     }
 
-}
 
+    public int rollDice() {
+        index = -1;
+
+        int diceValue = players[currentPlayer].rollDice();
+
+        try {
+            GfxDice.printDice(diceValue);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        String actualPosition = getCurrentPlayer().getActualposition();
+        System.out.println(getCurrentPlayer().getName() + " Actual position : " + getCurrentPlayer().getActualposition());
+
+        Set<String> possiblePaths = new HashSet<>();
+        possiblePaths.addAll(board.paths(actualPosition, diceValue));
+        getCurrentPlayer().setPossiblePaths(possiblePaths);
+
+        simpleGfxBoard.highlight(possiblePaths);
+
+        return diceValue;
+    }
+
+
+    public Player nextPlayer() {
+        currentPlayer = currentPlayer + 1 == players.length ? 0 : currentPlayer + 1;
+        return getCurrentPlayer();
+    }
+
+    public Player getCurrentPlayer() {
+        return players[currentPlayer];
+    }
+
+
+    public void movePlayerToNext(Player player) {
+        List<Integer[]> possiblePaths = new LinkedList<>();
+
+        for (String path : player.getPossiblePaths()) {
+            Integer[] position = board.transformKeyPosition(path);
+            possiblePaths.add(position);
+        }
+        if (!(index == possiblePaths.size() - 1)) {
+            player.setCurrentPosition(possiblePaths.get(++index));
+        }
+    }
+
+
+    public void movePlayerToPrevious(Player player) {
+        List<Integer[]> possiblePaths = new LinkedList<>();
+
+        for (String path : player.getPossiblePaths()) {
+            Integer[] position = board.transformKeyPosition(path);
+            possiblePaths.add(position);
+        }
+        if ((index > 0)) {
+            player.setCurrentPosition(possiblePaths.get(--index));
+        }
+    }
+
+    public void choosePath(Player player) {
+        //player choose a path
+        player.choosePath(player.getCurrentPosition());
+        String actualPosition = player.getActualposition();
+        System.out.println(player.getName() + " New Position: " + actualPosition);
+
+        //  player.choosePath();
+        player.moveCheese(board);
+    }
+
+    public String[] showQuestion(Player player) {
+        //Question Category according to the actual position of Player
+        Square square = board.getSquareMap().get(player.getActualposition());
+        QuestionSelector.Type category = square.getCategory();
+        System.out.println("New category: " + category);
+
+        //dar uma pergunta random da categoria da Posição do Player
+        Question question = QuestionSelector.getRandomQuestions(category);
+        System.out.println(question.getStatement());
+        return questionsGfx.showQuestion(question, category);
+
+
+    }
+
+
+    public void answer(Player player, Question question) {
+
+        //TODO mudar esse método (random) para escolher pelo teclado
+        String answer = player.choose(question.getAnswers());
+
+        Square square = board.getSquareMap().get(player.getActualposition());
+        //Seeing if the square is special, win a cheese
+        if (square.isSpecial() && answer.equals(question.getRightAnswer())) {
+            player.winCheese(square.getCategory());
+        }
+    }
+
+}

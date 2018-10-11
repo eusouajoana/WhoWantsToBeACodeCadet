@@ -5,20 +5,28 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Game;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Player;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Questions.Question;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.GfxDice;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.SimpleGfxBoard;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.Grid;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.SimpleGfxGrid;
 
 public class GameKeyboard implements KeyboardHandler {
 
 
     private Game game;
-    private Keyboard keyboard;
+    private Player player;
+    private SimpleGfxBoard simpleGfxBoard;
 
 
-    public GameKeyboard(Game game) {
-        this.game = game;
+    public GameKeyboard() {
+        this.game = new Game();
     }
 
 
-    public void keyboardInit(Game game) {
+    public void keyboardInit() {
         Keyboard keyboard = new Keyboard(this);
 
         KeyboardEvent up = new KeyboardEvent();
@@ -50,6 +58,21 @@ public class GameKeyboard implements KeyboardHandler {
         enter.setKey(KeyboardEvent.KEY_ENTER);
         enter.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(enter);
+
+        KeyboardEvent one = new KeyboardEvent();
+        one.setKey(KeyboardEvent.KEY_1);
+        one.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(one);
+
+        KeyboardEvent two = new KeyboardEvent();
+        two.setKey(KeyboardEvent.KEY_2);
+        two.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(two);
+
+        KeyboardEvent three = new KeyboardEvent();
+        three.setKey(KeyboardEvent.KEY_3);
+        three.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(three);
     }
 
 
@@ -57,35 +80,49 @@ public class GameKeyboard implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
-
+                game.movePlayerToNext(player);
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-
-                break;
-
-            case KeyboardEvent.KEY_LEFT:
-
-                break;
-
-            case KeyboardEvent.KEY_RIGHT:
-
+                game.movePlayerToPrevious(player);
                 break;
 
             case KeyboardEvent.KEY_SPACE:
                 if (!game.isStarted()) {
-                    Game game = new Game();
-                    sleep(2000);
-                    game.start();
+                    new SimpleGfxGrid(87,70);
                     game.setStarted(true);
+                    return;
                 }
+
+                game.nextPlayer();
+                //game.rollDice();
+                try{
+                    GfxDice.printDice(game.rollDice());
+                } catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+
                 break;
 
             case KeyboardEvent.KEY_ENTER:
+                game.choosePath(player);
+                game.showQuestion(player);
+                break;
 
+            case KeyboardEvent.KEY_1:
+                game.getCurrentPlayer().setAnswer(game.showQuestion(player)[0]);
+                break;
+
+            case KeyboardEvent.KEY_2:
+                game.getCurrentPlayer().setAnswer(game.showQuestion(player)[1]);
+                break;
+
+            case KeyboardEvent.KEY_3:
+                game.getCurrentPlayer().setAnswer(game.showQuestion(player)[2]);
                 break;
         }
     }
+
 
 
     @Override

@@ -1,6 +1,9 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Cheese;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Dice;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
@@ -17,6 +20,10 @@ public class Player {
     private String actualposition;
     private Cheese cheese;
     private Set<QuestionSelector.Type> littleCheese;
+    //private Keyboard keyboard;
+    private Set<String> possiblePaths;
+    private Integer[] currentPosition;
+    private String answer;
 
 
     //Constructor
@@ -25,6 +32,7 @@ public class Player {
         this.actualposition = "6e6";
         this.littleCheese = new HashSet<>();
         this.cheese = name.equals("player1") ? new Cheese(Color.PINK) : new Cheese(Color.LIGHT_GRAY);
+        //this.keyboard = new Keyboard(this);
     }
 
 
@@ -62,24 +70,10 @@ public class Player {
 
     //Player can choose his path according to the dice result
     //TODO transform this method to choose through keyboard!!!
-    public void choosePath(Set<String> listOfPaths) {
+    public void choosePath(Integer[] currentPosition) {
 
-        String choosedPosition = new String();
+        actualposition = currentPosition[0] + "e" + currentPosition[1];
 
-        //choose randomly a new Position
-        int randomChoose = (int) (Math.random() * listOfPaths.size());
-        int count = 0;
-        for (String position : listOfPaths) {
-
-            if (randomChoose == count) {
-                choosedPosition = position;
-                break;
-            }
-
-            count++;
-        }
-
-        actualposition = choosedPosition;
     }
 
     public String getActualposition() {
@@ -94,5 +88,38 @@ public class Player {
 
     public Cheese getCheese() {
         return cheese;
+    }
+
+
+    public void moveCheese(Board board) {
+        cheese.move(board.transformKeyPosition(actualposition));
+    }
+
+
+    public void setPossiblePaths(Set<String> possiblePaths) {
+        this.possiblePaths = possiblePaths;
+    }
+
+
+    public Set<String> getPossiblePaths() {
+        return possiblePaths;
+    }
+
+    public void setCurrentPosition(Integer[] currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
+    public Integer[] getCurrentPosition() {
+        return currentPosition;
+    }
+
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+
+    public String getAnswer() {
+        return answer;
     }
 }
