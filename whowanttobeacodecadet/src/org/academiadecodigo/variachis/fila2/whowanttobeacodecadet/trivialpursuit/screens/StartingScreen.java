@@ -1,5 +1,6 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.screens;
 
+import org.academiadecodigo.GameKeyboard;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -12,7 +13,7 @@ public class StartingScreen implements KeyboardHandler {
 
     private final int x;
     private final int y;
-    private Picture startingScreen;
+    private Picture pictureStartingScreen;
     private String path;
     private Game game;
     private Keyboard k;
@@ -26,8 +27,8 @@ public class StartingScreen implements KeyboardHandler {
         this.x = col;
         this.y = row;
         this.path = path;
-        this.startingScreen = new Picture((double)this.x, (double)this.y, path);
-        this.startingScreen.draw();
+        this.pictureStartingScreen = new Picture((double)this.x, (double)this.y, path);
+        this.pictureStartingScreen.draw();
 
 
     }
@@ -46,9 +47,9 @@ public class StartingScreen implements KeyboardHandler {
 
         if (event.equals(space) ) {
 
-            startingScreen.delete();
-            game = new Game();
-            game.start();
+            pictureStartingScreen.delete();
+            GameKeyboard keyboard = new GameKeyboard();
+            keyboard.keyboardInit();
             k.removeEventListener(space);
         }
     }
@@ -57,4 +58,7 @@ public class StartingScreen implements KeyboardHandler {
 
     }
 
+    public Picture getPictureStartingScreen() {
+        return pictureStartingScreen;
+    }
 }

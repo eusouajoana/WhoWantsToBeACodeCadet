@@ -13,27 +13,27 @@ public class GfxDice {
 
     public void printDice(int diceResult) throws InterruptedException {
 
-        Picture dice1 = new Picture(20, 20, "/img/dice-six-faces-one.png");
+        Picture dice1 = new Picture(40, 420, "/img/dice-six-faces-one.png");
         dice1.grow(-220,-220);
         dice1.translate(-220,-220);
 
-        Picture dice2 = new Picture(20, 20, "/img/dice-six-faces-two.png");
+        Picture dice2 = new Picture(40, 420, "/img/dice-six-faces-two.png");
         dice2.grow(-220,-220);
         dice2.translate(-220,-220);
 
-        Picture dice3 = new Picture(20, 20, "/img/dice-six-faces-three.png");
+        Picture dice3 = new Picture(40, 420, "/img/dice-six-faces-three.png");
         dice3.grow(-220,-220);
         dice3.translate(-220,-220);
 
-        Picture dice4 = new Picture(20, 20, "/img/dice-six-faces-four.png");
+        Picture dice4 = new Picture(40, 420, "/img/dice-six-faces-four.png");
         dice4.grow(-220,-220);
         dice4.translate(-220,-220);
 
-        Picture dice5 = new Picture(20, 20, "/img/dice-six-faces-five.png");
+        Picture dice5 = new Picture(40, 420, "/img/dice-six-faces-five.png");
         dice5.grow(-220,-220);
         dice5.translate(-220,-220);
 
-        Picture dice6 = new Picture(20, 20, "/img/dice-six-faces-six.png");
+        Picture dice6 = new Picture(40, 420, "/img/dice-six-faces-six.png");
         dice6.grow(-220,-220);
         dice6.translate(-220,-220);
 

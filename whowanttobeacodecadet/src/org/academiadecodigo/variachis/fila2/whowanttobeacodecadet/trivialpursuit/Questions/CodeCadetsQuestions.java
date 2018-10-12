@@ -9,7 +9,7 @@ public enum CodeCadetsQuestions implements Question {
     SARA_DOG("What's Sara's dog name?", new String[]{"Gropy", "Snoopy", "Foguete"}),
     SARA_WORD("What's Sara's favorite word?", new String[]{"Fossssca-sssse", "Piuto", "Pissscina"}),
     FELIPE_WIFE("What's the name of Felipe's wife?", new String[]{"Patrícia", "Luana", "Thais"}),
-    DANIEL_DAUGHTER("What's the name of Daniel's daughter", new String[]{"Lara", "Laura", "Daniela"}),
+    DANIEL_DAUGHTER("What's the name of Daniel's daughter?", new String[]{"Lara", "Laura", "Daniela"}),
     VITOR_FROM("Where is Vitor from?", new String[]{"Batalha", "Leiria", "Abrantes"}),
     DAVID_LOVES("What does David love?", new String[]{"Javascript", "His daughter", "His wife"}),
     IVO("What is Ivo proud of?", new String[]{"He lost 10kg in 1 and half months", "He is a father of a little man called Ivo Júnior", "He bombates code"}),

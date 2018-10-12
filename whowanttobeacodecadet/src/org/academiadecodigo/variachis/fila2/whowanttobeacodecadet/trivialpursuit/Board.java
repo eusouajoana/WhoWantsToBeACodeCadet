@@ -203,7 +203,7 @@ public class Board {
 
             switch(key){
                 case "1e1": case "5e1": case "8e1": case "11e2": case "6e5": case "11e6": case "11e10": case "8e11": case "6e10": case"4e11": case"1e8": case"1e5": case"4e6": case"9e6":
-                    squareMap.get(key).setCategory(QuestionSelector.Type.ACADEMIA);
+                    squareMap.get(key).setCategory(QuestionSelector.Type.ACADEMIADECODIGO);
                     break;
                 case "1e3": case "3e1": case "2e6": case "1e7": case "1e11": case "5e11": case "9e11": case "11e8": case "10e6": case"6e7": case"6e4": case"6e1": case"10e1": case"11e3":
                     squareMap.get(key).setCategory(QuestionSelector.Type.CODE_CADETS);

@@ -15,13 +15,11 @@ import java.util.Set;
 
 public class Player {
     private String name;
-    private int score;
     private boolean winner;
     private boolean rightAnswer;
     private String actualposition;
     private Cheese cheese;
     private Set<QuestionSelector.Type> littleCheese;
-    //private Keyboard keyboard;
     private Set<String> possiblePaths;
     private Integer[] currentPosition;
     private String answer;
@@ -33,8 +31,7 @@ public class Player {
         this.name = name;
         this.actualposition = "6e6";
         this.littleCheese = new HashSet<>();
-        this.cheese = name.equals("player1") ? new Cheese(Color.PINK) : new Cheese(Color.LIGHT_GRAY);
-        //this.keyboard = new Keyboard(this);
+        this.cheese = name.equals("Player 1") ? new Cheese(Color.PINK) : new Cheese(Color.LIGHT_GRAY);
     }
 
 
@@ -51,8 +48,8 @@ public class Player {
         rightAnswer = false;
     }
 
-    public void setRightAnswer(){
-        rightAnswer = true;
+    public void setRightAnswer(boolean rightAnswer){
+        this.rightAnswer = rightAnswer;
     }
 
 

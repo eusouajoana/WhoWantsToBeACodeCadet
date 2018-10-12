@@ -20,6 +20,7 @@ public class Color {
     public static final Color YELLOW = new Color(255, 255, 0);
     public static final Color PINK = new Color(255, 175, 175);
     public static final Color ORANGE = new Color(255, 200, 0);
+    public static final Color LIME = new Color(198, 207, 0);
 
     /**
      * Constructs a new Color object.

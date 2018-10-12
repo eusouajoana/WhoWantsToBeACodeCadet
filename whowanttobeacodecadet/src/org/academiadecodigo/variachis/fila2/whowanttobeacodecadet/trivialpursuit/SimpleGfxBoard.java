@@ -20,9 +20,11 @@ public class SimpleGfxBoard {
     private Rectangle cursor;
     private int cursorRow;
     private int cursorCol;
+    private List<Rectangle> highlights;
 
     public SimpleGfxBoard(Board board) {
         this.board = board;
+        this.highlights = new LinkedList<>();
         //this.cursor = new Rectangle(xRectangle, yRectangle, cellsize, cellsize);
         //cursor.setColor(Color.BLACK);
     }
@@ -328,9 +330,11 @@ public class SimpleGfxBoard {
         Rectangle rectangle = new Rectangle(x, y, cellsize, cellsize);
         rectangle.setColor(Color.YELLOW);
         rectangle.draw();
+        highlights.add(rectangle);
     }
 
-    public void cursorInitialPosition(Set<String> paths){
+
+    public void cursorInitialPosition(Set<String> paths) {
         List<Integer[]> positions = new LinkedList<>();
 
         for (String path : paths) {
@@ -345,7 +349,7 @@ public class SimpleGfxBoard {
         int x = (147 - cellsize) + cursorCol * 54;
         int y = (152 - cellsize) + cursorRow * 54;
 
-        this.cursor = new Rectangle(x,y,cellsize,cellsize);
+        this.cursor = new Rectangle(x, y, cellsize, cellsize);
         cursor.setColor(Color.BLACK);
         cursor.fill();
 
@@ -355,7 +359,7 @@ public class SimpleGfxBoard {
         return cursor;
     }
 
-    public void moveCursor(Integer[] nextPosition){
+    public void moveCursor(Integer[] nextPosition) {
 
         int previousRow = cursorRow;
         int previousCol = cursorCol;
@@ -370,6 +374,17 @@ public class SimpleGfxBoard {
         this.cursorRow = nextPosition[0];
         this.cursorCol = nextPosition[1];
 
+    }
 
+    public List<Rectangle> getHighlights() {
+        return highlights;
+    }
+
+
+    public void deleteHighlights() {
+        for (Rectangle highlight: highlights) {
+            highlight.delete();
+        }
+        highlights.clear();
     }
 }

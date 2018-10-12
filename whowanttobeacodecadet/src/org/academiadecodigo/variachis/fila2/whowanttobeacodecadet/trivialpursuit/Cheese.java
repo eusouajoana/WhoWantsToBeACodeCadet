@@ -5,7 +5,6 @@ import org.academiadecodigo.simplegraphics.graphics.Movable;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.Player;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.position.GridPosition;
 
 public class Cheese implements Movable {
 
@@ -21,16 +20,21 @@ public class Cheese implements Movable {
         this.actualPosition = new int[]{6,6};
         outerRectangle = new Rectangle(423, 429, 43, 43);
         outerRectangle.setColor(color);
-        outerRectangle.fill();
 
         littleCheeses[0] = new Rectangle(426, 432, 18, 18);
         littleCheeses[1] = new Rectangle(444, 432, 18, 18);
         littleCheeses[2] = new Rectangle(426, 450, 18, 18);
         littleCheeses[3] = new Rectangle(444, 450, 18, 18);
 
+
+    }
+
+    public void printCheese(){
+
+        outerRectangle.fill();
+
         for (Rectangle rectangle : littleCheeses) {
             rectangle.setColor(Color.BLACK);
-            //rectangle.fill();
             rectangle.draw();
         }
     }
@@ -76,7 +80,7 @@ public class Cheese implements Movable {
                 littleCheeses[0].setColor(Color.GREEN);
                 littleCheeses[0].fill();
             break;
-            case ACADEMIA:
+            case ACADEMIADECODIGO:
                 littleCheeses[1].setColor(Color.RED);
                 littleCheeses[1].fill();
                 break;

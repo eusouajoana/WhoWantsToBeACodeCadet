@@ -8,7 +8,7 @@ public class QuestionSelector {
         MASTERS,
         CODE_CADETS,
         PROGRAMMING_CONCEPTS,
-        ACADEMIA;
+        ACADEMIADECODIGO;
     }
 
 
@@ -22,7 +22,7 @@ public class QuestionSelector {
         map.put(Type.MASTERS, MastersQuestions.values());
         map.put(Type.CODE_CADETS, CodeCadetsQuestions.values());
         map.put(Type.PROGRAMMING_CONCEPTS, ProgrammingConceptsQuestions.values());
-        map.put(Type.ACADEMIA, AcademiaQuestions.values());
+        map.put(Type.ACADEMIADECODIGO, AcademiaQuestions.values());
     }
 
 
@@ -41,8 +41,8 @@ public class QuestionSelector {
             case PROGRAMMING_CONCEPTS:
                 return (getRandomQuestions(Type.PROGRAMMING_CONCEPTS)).getAnswers();
 
-            case ACADEMIA:
-                return (getRandomQuestions(Type.ACADEMIA)).getAnswers();
+            case ACADEMIADECODIGO:
+                return (getRandomQuestions(Type.ACADEMIADECODIGO)).getAnswers();
 
             case CODE_CADETS:
                 return (getRandomQuestions(Type.CODE_CADETS)).getAnswers();
@@ -51,13 +51,10 @@ public class QuestionSelector {
     }
 
 
-
-
     public static String getRandomQuestion(Type type) {
         System.out.println(Arrays.toString(map.get(type)));
         return Arrays.toString(map.get(type));
     }
-
 
 
     public static Question getRandomQuestions(Type type) {
@@ -68,7 +65,7 @@ public class QuestionSelector {
             case CODE_CADETS:
                 return CodeCadetsQuestions.values()[(int) (Math.random() * CodeCadetsQuestions.values().length)];
 
-            case ACADEMIA:
+            case ACADEMIADECODIGO:
                 return AcademiaQuestions.values()[(int) (Math.random() * AcademiaQuestions.values().length)];
 
             case PROGRAMMING_CONCEPTS:
@@ -76,7 +73,6 @@ public class QuestionSelector {
         }
         return null;
     }
-
 
 
     public static Type randomCategory() {

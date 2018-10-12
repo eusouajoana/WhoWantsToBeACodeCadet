@@ -14,53 +14,138 @@ public class QuestionsGfx {
     private String[] answers;
     private KeyHandler k;
 
+    private Rectangle rect1;
+    private Rectangle rect2;
+    private Rectangle rect;
+    private Text text;
+    private Text text1;
+    private Text text2;
+    private Text text3;
+    private Text text4;
+
 
     public String[] showQuestion(Question question, QuestionSelector.Type category) {
         String[] answers = new String[3];
         answers = question.getAnswers().toArray(answers);
-
-        Rectangle rect2 = new Rectangle(196, 363, 520, 200);
-        rect2.setColor(Color.ORANGE);
-        rect2.draw();
+        //y363
+        //x196
+        this.rect2 = new Rectangle(76, 363, 725, 200);
+        rect2.setColor(Color.BLACK);
         rect2.fill();
 
-        Rectangle rect = new Rectangle(183, 350, 520, 200);
-        rect.setColor(Color.BLUE);
-        rect.draw();
+        this.rect = new Rectangle(66, 350, 720, 200);
+        rect.setColor(Color.LIME);
         rect.fill();
 
-        Rectangle rect1 = new Rectangle(188, 358, 505, 28);
-        rect1.setColor(Color.ORANGE);
-        rect1.draw();
+        this.rect1 = new Rectangle(76, 358, 700, 28);
+        rect1.setColor(Color.BLACK);
         rect1.fill();
 
-        Text text4 = new Text(210, 370, category.toString() );
-        text4.setColor(Color.CYAN);
+        this.text4 = new Text(106, 370, category.toString());
+        text4.setColor(Color.WHITE);
         text4.draw();
         text4.grow(19, 15);
 
-        Text text = new Text(210, 400, question.getStatement() + "\n TEEESSSTT");
-        text.setColor(Color.YELLOW);
+        this.text = new Text(96, 400, question.getStatement());
+        text.setColor(Color.BLACK);
         text.draw();
-        text.grow(10, 8);
+        text.grow(13, 10);
 
-        Text text1 = new Text(210, 440, "1." + answers[0]);
-        text1.setColor(Color.YELLOW);
+        this.text1 = new Text(96, 440, "1." + answers[0]);
+        text1.setColor(Color.BLACK);
         text1.draw();
-        text1.grow(8, 7);
+        text1.grow(10, 9);
 
-        Text text2 = new Text(210, 480, "2." + answers[1]);
-        text2.setColor(Color.YELLOW);
+        this.text2 = new Text(96, 480, "2." + answers[1]);
+        text2.setColor(Color.BLACK);
         text2.draw();
-        text2.grow(8, 7);
+        text2.grow(10, 9);
 
-        Text text3 = new Text(210, 520, "3." + answers[2]);
-        text3.setColor(Color.YELLOW);
+        this.text3 = new Text(96, 520, "3." + answers[2]);
+        text3.setColor(Color.BLACK);
         text3.draw();
-        text3.grow(8, 7);
+        text3.grow(10, 9);
 
         return answers;
     }
+
+    public Rectangle getRect1() {
+        return rect1;
+    }
+
+    public Rectangle getRect2() {
+        return rect2;
+    }
+
+    public Rectangle getRect() {
+        return rect;
+    }
+
+    public Text getText() {
+        return text;
+    }
+
+    public Text getText1() {
+        return text1;
+    }
+
+    public Text getText2() {
+        return text2;
+    }
+
+    public Text getText3() {
+        return text3;
+    }
+
+    public Text getText4() {
+        return text4;
+    }
+
+
+    public void hideQuestion() {
+        rect.delete();
+        rect1.delete();
+        rect2.delete();
+        text.delete();
+        text1.delete();
+        text2.delete();
+        text3.delete();
+        text4.delete();
+    }
+
+    public void hideRec() {
+        rect.delete();
+    }
+
+    public void hideRec1() {
+        rect1.delete();
+    }
+
+    public void hideRec2() {
+        rect2.delete();
+    }
+
+    public void hideText() {
+        text.delete();
+    }
+
+    public void hideText1() {
+
+    }
+
+    public void hideText2() {
+
+    }
+
+    public void hideText3() {
+
+    }
+
+    public void hideText4() {
+
+    }
+
+
 }
 
 

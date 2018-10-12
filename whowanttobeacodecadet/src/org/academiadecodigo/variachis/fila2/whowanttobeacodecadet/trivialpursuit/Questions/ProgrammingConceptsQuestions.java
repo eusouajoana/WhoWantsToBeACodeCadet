@@ -12,7 +12,7 @@ public enum ProgrammingConceptsQuestions implements Question{
     BINARY("How do we write the number 69 in binary?", new String[]{"01000101", "10010100", "01011010"}),
     HEXADECIMAL("How do we write the numbers 45 and 69 in hexadecimal?", new String[]{" 2D and 45", "F0 and 20", "4B and FF"}),
     BOOLEAN("What do we call a variable that can be either true or false?", new String[]{"Boolean", "Boole", "Boolenean (Go Rafael!)"}),
-    LOGIC_GATES("What is a Logic Gate?", new String[]{"A device implementing a boolean logical operation on one or more binary inputs and producing a single binary output", "Who knows?", "A former leader of a right wing party"}),
+    LOGIC_GATES("What is a Logic Gate?", new String[]{"A device implementing a boolean logical operation on one or more binary inputs", "Who knows?", "A former leader of a right wing party"}),
     ALAN_TURING("Who was Alan Turing", new String[]{"A gay jew", "The father of computer science", "A tua prima"}),
     ADA_LOVELACE("Who was Ada Lovalace", new String[]{"Our mother of programming", "Just a little thief", "A tua prima"}),
     RICHARD_STALLMAN("What is the most famous song by Richard Stallman?", new String[]{"Free Software Song", "Hakuna Matata", "Estupidamente apaixonado"}),
