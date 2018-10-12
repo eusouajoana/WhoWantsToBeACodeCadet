@@ -159,7 +159,7 @@ public class GameKeyboard implements KeyboardHandler {
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
                     printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(2000);
+                    sleep(1500);
                     deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();
@@ -182,7 +182,7 @@ public class GameKeyboard implements KeyboardHandler {
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
                     printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(2000);
+                    sleep(1500);
                     deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();
@@ -204,7 +204,7 @@ public class GameKeyboard implements KeyboardHandler {
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
                     printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(2000);
+                    sleep(1500);
                     deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();

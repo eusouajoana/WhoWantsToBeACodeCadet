@@ -176,7 +176,7 @@ public class Board {
     public Integer[] transformKeyPosition(String key){
 
         String[] keyTransform = key.split("e");
-        System.out.println(keyTransform[0] + " " + keyTransform[1]);
+        //System.out.println(keyTransform[0] + " " + keyTransform[1]);
         Queue<Integer> squarePosition = new LinkedList<>();
         squarePosition.clear();
 
@@ -188,7 +188,7 @@ public class Board {
             squarePosition.add(num);
         }
         Integer[] position = new Integer[2];
-        System.out.println(squarePosition);
+       // System.out.println(squarePosition);
         return squarePosition.toArray(position);
     }
 

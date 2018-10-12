@@ -57,7 +57,7 @@ public class Player {
     public String choose(List<String> answers) {
         int indexAnswer = (int) (Math.random() * 3);
         String answer = answers.get(indexAnswer);
-        System.out.println(name + " answer: " + answer);
+        //System.out.println(name + " answer: " + answer);
         return answer;
     }
 
@@ -77,8 +77,8 @@ public class Player {
     //Player can choose his path according to the dice result
     //TODO transform this method to choose through keyboard!!!
     public void choosePath(Integer[] currentPosition) {
-        System.out.println("actual" + actualposition);
-        System.out.println("current position 0:" + currentPosition[0]);
+        //System.out.println("actual" + actualposition);
+        //System.out.println("current position 0:" + currentPosition[0]);
         actualposition =
                 currentPosition[0] + "e"
                         + currentPosition[1];
@@ -106,13 +106,13 @@ public class Player {
 
 
     public void setPossiblePaths(Set<String> possiblePaths) {
-        System.out.println("player: " + this.getName() + " " + possiblePaths);
+        //System.out.println("player: " + this.getName() + " " + possiblePaths);
         this.possiblePaths = possiblePaths;
     }
 
 
     public Set<String> getPossiblePaths() {
-        System.out.println("player: " + this.getName() + " " + possiblePaths);
+       // System.out.println("player: " + this.getName() + " " + possiblePaths);
         return possiblePaths;
     }
 
