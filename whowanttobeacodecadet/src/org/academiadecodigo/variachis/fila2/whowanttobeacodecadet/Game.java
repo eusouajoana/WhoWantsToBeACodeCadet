@@ -75,43 +75,10 @@ public class Game {
         this.started = started;
     }
 
-
-    public void turn(Player player, Question question) {
-
-        if (!player.getAnswer().equals(question.getRightAnswer())) {
-            //show animation saying player got the wrong answer
-            nextPlayer();
-            return;
-        }
-
-
-        if (player.getAnswer().equals(question.getRightAnswer()) && !player.isWinner()) {
-
-        }
-
-        if (isGameWinner(player)) {
-            win(player);
-            return;
-        }
-
-    }
-
-
-    public void win(Player player) {
-        System.out.println(player.getName() + ": you win!");
-    }
-
-
     public int rollDice() {
         index = -1;
 
         int diceValue = players[currentPlayer].rollDice();
-
-      /*  try {
-            GfxDice.printDice(diceValue);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } */
 
         String actualPosition = getCurrentPlayer().getActualposition();
 
@@ -121,13 +88,11 @@ public class Game {
 
         simpleGfxBoard.highlight(possiblePaths);
         simpleGfxBoard.cursorInitialPosition(possiblePaths);
-        System.out.println("dice do game" + diceValue);
         return diceValue;
     }
 
 
     public Player nextPlayer() {
-        //currentPlayer = currentPlayer == (players.length - 1) ? 0 : currentPlayer + 1;
 
         if (currentPlayer == 0) {
             currentPlayer = 1;
@@ -136,7 +101,6 @@ public class Game {
         }
 
         Player playercurrent = getCurrentPlayer();
-        System.out.println(getCurrentPlayer().getName() + " It's your turn! Press Space to Roll Dice!");
         return playercurrent;
     }
 
@@ -158,9 +122,6 @@ public class Game {
 
         if (!(index == possiblePathsList.size() - 1)) {
             Integer[] nextPosition = possiblePathsList.get(++index);
-
-            System.out.println("entrei no if!!");
-            //player.setCurrentPosition(possiblePathsList.get(++index));
             simpleGfxBoard.moveCursor(nextPosition);
             player.setCurrentPosition(nextPosition);
         }
@@ -177,9 +138,6 @@ public class Game {
 
         if (!(index == 0)) {
             Integer[] nextPosition = possiblePathsList.get(--index);
-
-            System.out.println("entrei no if!!");
-            //player.setCurrentPosition(possiblePathsList.get(++index));
             simpleGfxBoard.moveCursor(nextPosition);
             player.setCurrentPosition(nextPosition);
         }
@@ -190,7 +148,6 @@ public class Game {
         //player choose a path
         player.choosePath(player.getCurrentPosition());
         String actualPosition = player.getActualposition();
-        System.out.println(player.getName() + " New Position: " + actualPosition);
 
         //  player.choosePathGame();
         player.moveCheese(board);
@@ -200,9 +157,6 @@ public class Game {
         //Question Category according to the actual position of Player
         Square square = board.getSquareMap().get(getCurrentPlayer().getActualposition());
         this.category = square.getCategory();
-        System.out.println("New category: " + category);
-
-        //dar uma pergunta random da categoria da Posição do Player
         this.question = QuestionSelector.getRandomQuestions(category);
         System.out.println(question.getStatement());
         this.answersInPlay = questionsGfx.showQuestion(question, category);
@@ -234,7 +188,6 @@ public class Game {
 
         getCurrentPlayer().setAnswered(false);
         getCurrentPlayer().setRightAnswer(false);
-        //nextPlayer();
         //aparece uma mensagem
 
         questionsGfx.hideQuestion();

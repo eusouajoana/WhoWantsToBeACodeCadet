@@ -22,7 +22,6 @@ public class GameKeyboard implements KeyboardHandler {
 
     private Game game;
     private Player player;
-    private SimpleGfxBoard simpleGfxBoard;
     private Rectangle cursor;
     private GfxDice gfxDice;
     private boolean firstTurn;
@@ -30,15 +29,9 @@ public class GameKeyboard implements KeyboardHandler {
     private QuestionsGfx questionsGfx;
     private Text textFinal;
     private Rectangle win;
-
-    private Rectangle rect1;
-    private Rectangle rect2;
-    private Rectangle rect;
-    private Text text;
-    private Text text1;
-    private Text text2;
-    private Text text3;
-    private Text text4;
+    private Rectangle turnFrame;
+    private Text turnText;
+    private String message;
 
 
     public GameKeyboard() {
@@ -49,13 +42,30 @@ public class GameKeyboard implements KeyboardHandler {
         this.firstTurn = true;
         this.startingScreen = new StartingScreen(10, 10, "resources/img/startscreen.png");
         this.questionsGfx = game.getQuestionsGfx();
-        Rectangle win = new Rectangle(76, 363, 725, 200);
+        this.win = new Rectangle(76, 363, 725, 200);
         win.setColor(Color.ORANGE);
-        Text textFinal = new Text(106, 370, game.getCurrentPlayer().getName() + ": YOU WIN!");
+        this.textFinal = new Text(106, 370, game.getCurrentPlayer().getName() + ": YOU WIN!");
         textFinal.setColor(Color.BLUE);
         textFinal.grow(19, 15);
+
+
     }
 
+    public void printMessage(String message){
+        this.turnFrame = new Rectangle(145, 50, 600, 60);
+        turnFrame.setColor(Color.WHITE);
+        this.message = message;
+        this.turnText = new Text(240, 80, message);
+        turnText.grow(10,10);
+
+        turnFrame.fill();
+        turnText.draw();
+    }
+
+    public void deleteMessage(){
+        turnFrame.delete();
+        turnText.delete();
+    }
 
     public void keyboardInit() {
         Keyboard keyboard = new Keyboard(this);
@@ -69,16 +79,6 @@ public class GameKeyboard implements KeyboardHandler {
         down.setKey(KeyboardEvent.KEY_DOWN);
         down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(down);
-
-       /* KeyboardEvent left = new KeyboardEvent();
-        left.setKey(KeyboardEvent.KEY_LEFT);
-        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(left);
-
-        KeyboardEvent right = new KeyboardEvent();
-        right.setKey(KeyboardEvent.KEY_RIGHT);
-        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(right);*/
 
         KeyboardEvent space = new KeyboardEvent();
         space.setKey(KeyboardEvent.KEY_SPACE);
@@ -119,6 +119,7 @@ public class GameKeyboard implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_SPACE:
+
                 if (!game.isStarted()) {
                     startingScreen.getPictureStartingScreen().delete();
                     new SimpleGfxGrid(87, 70);
@@ -130,8 +131,10 @@ public class GameKeyboard implements KeyboardHandler {
                     return;
                 }
 
+                if(!firstTurn){
+                    deleteMessage();
+                }
 
-                //if(game.getCurrentPlayer().isAnswered() || firstTurn) {
 
                 try {
                     gfxDice.printDice(game.rollDice());
@@ -155,31 +158,67 @@ public class GameKeyboard implements KeyboardHandler {
                 game.getCurrentPlayer().setAnswer(game.getAnswersInPlay()[0]);
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
+                    printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
+                    sleep(2000);
+                    deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();
+                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
+                    return;
                 }
                 if (game.isGameWinner(game.getCurrentPlayer())) {
                     win.fill();
                     textFinal.draw();
+                    return;
                 }
+
+                printMessage(game.getCurrentPlayer().getName() + " You're right! Very Better! You can play again. Press Space to Roll Dice!");
+
+
                 break;
 
             case KeyboardEvent.KEY_2:
                 game.getCurrentPlayer().setAnswer(game.getAnswersInPlay()[1]);
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
+                    printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
+                    sleep(2000);
+                    deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();
+                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
+                    return;
                 }
+                if (game.isGameWinner(game.getCurrentPlayer())) {
+                    win.fill();
+                    textFinal.draw();
+                    return;
+                }
+
+                printMessage(game.getCurrentPlayer().getName() + " You're right! Very Better! You can play again. Press Space to Roll Dice!");
+
                 break;
 
             case KeyboardEvent.KEY_3:
                 game.getCurrentPlayer().setAnswer(game.getAnswersInPlay()[2]);
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
+                    printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
+                    sleep(2000);
+                    deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();
+                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
+                    return;
                 }
+
+                if (game.isGameWinner(game.getCurrentPlayer())) {
+                    win.fill();
+                    textFinal.draw();
+                    return;
+                }
+
+                printMessage(game.getCurrentPlayer().getName() + " You're right! Very Better! You can play again. Press Space to Roll Dice!");
                 break;
         }
     }

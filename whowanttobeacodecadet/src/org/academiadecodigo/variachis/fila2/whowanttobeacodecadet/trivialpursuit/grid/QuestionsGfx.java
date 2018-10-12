@@ -11,8 +11,6 @@ import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit
 
 public class QuestionsGfx {
 
-    private String[] answers;
-    private KeyHandler k;
 
     private Rectangle rect1;
     private Rectangle rect2;
@@ -27,8 +25,7 @@ public class QuestionsGfx {
     public String[] showQuestion(Question question, QuestionSelector.Type category) {
         String[] answers = new String[3];
         answers = question.getAnswers().toArray(answers);
-        //y363
-        //x196
+
         this.rect2 = new Rectangle(76, 363, 725, 200);
         rect2.setColor(Color.BLACK);
         rect2.fill();
@@ -69,37 +66,6 @@ public class QuestionsGfx {
         return answers;
     }
 
-    public Rectangle getRect1() {
-        return rect1;
-    }
-
-    public Rectangle getRect2() {
-        return rect2;
-    }
-
-    public Rectangle getRect() {
-        return rect;
-    }
-
-    public Text getText() {
-        return text;
-    }
-
-    public Text getText1() {
-        return text1;
-    }
-
-    public Text getText2() {
-        return text2;
-    }
-
-    public Text getText3() {
-        return text3;
-    }
-
-    public Text getText4() {
-        return text4;
-    }
 
 
     public void hideQuestion() {
@@ -111,38 +77,6 @@ public class QuestionsGfx {
         text2.delete();
         text3.delete();
         text4.delete();
-    }
-
-    public void hideRec() {
-        rect.delete();
-    }
-
-    public void hideRec1() {
-        rect1.delete();
-    }
-
-    public void hideRec2() {
-        rect2.delete();
-    }
-
-    public void hideText() {
-        text.delete();
-    }
-
-    public void hideText1() {
-
-    }
-
-    public void hideText2() {
-
-    }
-
-    public void hideText3() {
-
-    }
-
-    public void hideText4() {
-
     }
 
 

@@ -100,10 +100,6 @@ public class Board {
     //Board offer set of possible paths to the Player according to the dice result
     public Set<String> paths(String actualPosition, int dice) {
 
-        //Print Dice
-        System.out.println("*--------------- Board Tests --------------------*");
-        System.out.println("Dice Result : " + dice);
-
         //Set container to hold the final possibilities of positions
         Set<String> finalPositions = new HashSet<>();
         finalPositions.clear();
@@ -162,7 +158,6 @@ public class Board {
         }
 
         finalPositions.remove(actualPosition);
-        System.out.println("*-*-*-*-*- Final Possible Positions " + finalPositions + "*-*-*-*-*-");
 
         neighboursList.clear();
         newNeighbours.clear();
