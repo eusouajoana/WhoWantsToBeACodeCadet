@@ -53,18 +53,18 @@ public class GameKeyboard implements KeyboardHandler {
 
     }
 
-    public void printMessage(String message){
+    public void printMessage(String message) {
         this.turnFrame = new Rectangle(145, 50, 600, 60);
         turnFrame.setColor(Color.WHITE);
         this.message = message;
         this.turnText = new Text(240, 80, message);
-        turnText.grow(10,10);
+        turnText.grow(10, 10);
 
         turnFrame.fill();
         turnText.draw();
     }
 
-    public void deleteMessage(){
+    public void deleteMessage() {
         turnFrame.delete();
         turnText.delete();
     }
@@ -111,6 +111,7 @@ public class GameKeyboard implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 game.movePlayerToNext(game.getCurrentPlayer());
@@ -118,7 +119,7 @@ public class GameKeyboard implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_DOWN:
-                if(firstmove){
+                if (firstmove) {
                     return;
                 }
                 game.movePlayerToPrevious(game.getCurrentPlayer());
@@ -137,14 +138,14 @@ public class GameKeyboard implements KeyboardHandler {
                     return;
                 }
 
-                if(!firstTurn){
+                if (!firstTurn) {
                     deleteMessage();
                 }
 
 
                 try {
 
-                    if(!rolledDice) {
+                    if (!rolledDice) {
                         gfxDice.printDice(game.rollDice());
                         firstTurn = false;
                         rolledDice = true;
@@ -158,7 +159,7 @@ public class GameKeyboard implements KeyboardHandler {
 
                 break;
             case KeyboardEvent.KEY_S:
-                if(answered && rolledDice) {
+                if (answered && rolledDice) {
                     game.choosePathGame(game.getCurrentPlayer());
                     game.getSimpleGfxBoard().getCursor().delete();
                     game.showQuestion();
@@ -169,8 +170,7 @@ public class GameKeyboard implements KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_1:
-<<<<<<< HEAD
-                if(timeToAnswer) {
+                if (timeToAnswer) {
                     answered = true;
                     rolledDice = false;
                     timeToAnswer = false;
@@ -187,25 +187,13 @@ public class GameKeyboard implements KeyboardHandler {
                     }
 
                     printMessage(game.getCurrentPlayer().getName() + " You're right! Very Better! You can play again. Press Space to Roll Dice!");
-=======
-                game.getCurrentPlayer().setAnswer(game.getAnswersInPlay()[0]);
-                game.answer(game.getQuestion());
-                if (!game.getCurrentPlayer().isRightAnswer()) {
-                    printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(1500);
-                    deleteMessage();
-                    game.nextPlayer();
-                    player = game.getCurrentPlayer();
-                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
-                    return;
->>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
+                    game.getCurrentPlayer().setAnswer(game.getAnswersInPlay()[0]);
+                    game.answer(game.getQuestion());
                 }
-
                 break;
 
             case KeyboardEvent.KEY_2:
-<<<<<<< HEAD
-                if(timeToAnswer) {
+                if (timeToAnswer) {
                     answered = true;
                     rolledDice = false;
                     timeToAnswer = false;
@@ -221,29 +209,13 @@ public class GameKeyboard implements KeyboardHandler {
                     }
 
                     printMessage(game.getCurrentPlayer().getName() + " You're right! Very Better! You can play again. Press Space to Roll Dice!");
-=======
-                game.getCurrentPlayer().setAnswer(game.getAnswersInPlay()[1]);
-                game.answer(game.getQuestion());
-                if (!game.getCurrentPlayer().isRightAnswer()) {
-                    printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(1500);
-                    deleteMessage();
-                    game.nextPlayer();
-                    player = game.getCurrentPlayer();
-                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
-                    return;
-                }
-                if (game.isGameWinner(game.getCurrentPlayer())) {
-                    win.fill();
-                    textFinal.draw();
-                    return;
->>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
+                    game.getCurrentPlayer().setAnswer(game.getAnswersInPlay()[1]);
+                    game.answer(game.getQuestion());
                 }
                 break;
 
             case KeyboardEvent.KEY_3:
-<<<<<<< HEAD
-                if(timeToAnswer) {
+                if (timeToAnswer) {
                     answered = true;
                     rolledDice = false;
                     timeToAnswer = false;
@@ -251,6 +223,7 @@ public class GameKeyboard implements KeyboardHandler {
                     game.answer(game.getQuestion());
                     if (!game.getCurrentPlayer().isRightAnswer()) {
                         wrongAnswer();
+                        return;
                     }
 
                     if (game.isGameWinner(game.getCurrentPlayer())) {
@@ -258,25 +231,6 @@ public class GameKeyboard implements KeyboardHandler {
                         return;
                     }
 
-                    printMessage(game.getCurrentPlayer().getName() + " You're right! Very Better! You can play again. Press Space to Roll Dice!");
-=======
-                game.getCurrentPlayer().setAnswer(game.getAnswersInPlay()[2]);
-                game.answer(game.getQuestion());
-                if (!game.getCurrentPlayer().isRightAnswer()) {
-                    printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(1500);
-                    deleteMessage();
-                    game.nextPlayer();
-                    player = game.getCurrentPlayer();
-                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
-                    return;
-                }
-
-                if (game.isGameWinner(game.getCurrentPlayer())) {
-                    win.fill();
-                    textFinal.draw();
-                    return;
->>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
                 }
                 break;
         }
@@ -298,18 +252,18 @@ public class GameKeyboard implements KeyboardHandler {
         }
     }
 
-    public void wrongAnswer(){
+    public void wrongAnswer() {
         printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
         deleteMessage();
         game.nextPlayer();
         player = game.getCurrentPlayer();
-        printMessage( " Sifufu! You're Wrong! " + game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
+        printMessage(" Sifufu! You're Wrong! " + game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
     }
 
-    public void endGame(){
+    public void endGame() {
         win.fill();
         textFinal.draw();
-        if(game.getCurrentPlayer().getName().equals("Player 1")) {
+        if (game.getCurrentPlayer().getName().equals("Player 1")) {
             EndScreen end = new EndScreen(10, 10, "resources/img/endscreenP1.png");
             return;
         }

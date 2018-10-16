@@ -54,10 +54,6 @@ public class Player {
     public String choose(List<String> answers) {
         int indexAnswer = (int) (Math.random() * 3);
         String answer = answers.get(indexAnswer);
-<<<<<<< HEAD
-=======
-        //System.out.println(name + " answer: " + answer);
->>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
         return answer;
     }
 
@@ -76,11 +72,6 @@ public class Player {
 
     //Player can choose his path according to the dice result
     public void choosePath(Integer[] currentPosition) {
-<<<<<<< HEAD
-=======
-        //System.out.println("actual" + actualposition);
-        //System.out.println("current position 0:" + currentPosition[0]);
->>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
         actualposition =
                 currentPosition[0] + "e"
                         + currentPosition[1];
@@ -108,19 +99,11 @@ public class Player {
 
 
     public void setPossiblePaths(Set<String> possiblePaths) {
-<<<<<<< HEAD
-=======
-        //System.out.println("player: " + this.getName() + " " + possiblePaths);
->>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
         this.possiblePaths = possiblePaths;
     }
 
 
     public Set<String> getPossiblePaths() {
-<<<<<<< HEAD
-=======
-       // System.out.println("player: " + this.getName() + " " + possiblePaths);
->>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
         return possiblePaths;
     }
 
