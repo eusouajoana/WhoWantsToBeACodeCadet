@@ -2,7 +2,6 @@ package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursui
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.position.GridPosition;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.position.SimpleGfxGridPosition;
 

@@ -1,14 +1,11 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Cheese;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Dice;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.board.Board;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.board.Cheese;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.board.Dice;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

@@ -31,7 +31,7 @@ public class QuestionsGfx {
         rect2.fill();
 
         this.rect = new Rectangle(66, 350, 720, 200);
-        rect.setColor(Color.LIME);
+        rect.setColor(Color.WHITE);
         rect.fill();
 
         this.rect1 = new Rectangle(76, 358, 700, 28);

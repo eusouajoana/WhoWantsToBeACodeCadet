@@ -1,16 +1,12 @@
 package org.academiadecodigo.variachis.fila2.whowanttobeacodecadet;
 
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.GfxDice;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.board.GfxDice;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.Question;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Board;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.board.Board;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Questions.QuestionSelector;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Text;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.SimpleGfxBoard;
-import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.Square;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.board.SimpleGfxBoard;
+import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.board.Square;
 import org.academiadecodigo.variachis.fila2.whowanttobeacodecadet.trivialpursuit.grid.QuestionsGfx;
 
 import java.util.HashSet;
@@ -123,6 +119,8 @@ public class Game {
             Integer[] nextPosition = possiblePathsList.get(++index);
             simpleGfxBoard.moveCursor(nextPosition);
             player.setCurrentPosition(nextPosition);
+        } else{
+            index = -1;
         }
     }
 
@@ -139,6 +137,8 @@ public class Game {
             Integer[] nextPosition = possiblePathsList.get(--index);
             simpleGfxBoard.moveCursor(nextPosition);
             player.setCurrentPosition(nextPosition);
+        } else{
+            index = possiblePathsList.size();
         }
 
     }
