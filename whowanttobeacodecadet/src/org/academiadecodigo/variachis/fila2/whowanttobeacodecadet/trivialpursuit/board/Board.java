@@ -176,6 +176,10 @@ public class Board {
     public Integer[] transformKeyPosition(String key){
 
         String[] keyTransform = key.split("e");
+<<<<<<< HEAD:whowanttobeacodecadet/src/org/academiadecodigo/variachis/fila2/whowanttobeacodecadet/trivialpursuit/board/Board.java
+=======
+        //System.out.println(keyTransform[0] + " " + keyTransform[1]);
+>>>>>>> a7852805e55be74f718b2cf3e9963948a397a068:whowanttobeacodecadet/src/org/academiadecodigo/variachis/fila2/whowanttobeacodecadet/trivialpursuit/Board.java
         Queue<Integer> squarePosition = new LinkedList<>();
         squarePosition.clear();
 
@@ -187,6 +191,10 @@ public class Board {
             squarePosition.add(num);
         }
         Integer[] position = new Integer[2];
+<<<<<<< HEAD:whowanttobeacodecadet/src/org/academiadecodigo/variachis/fila2/whowanttobeacodecadet/trivialpursuit/board/Board.java
+=======
+       // System.out.println(squarePosition);
+>>>>>>> a7852805e55be74f718b2cf3e9963948a397a068:whowanttobeacodecadet/src/org/academiadecodigo/variachis/fila2/whowanttobeacodecadet/trivialpursuit/Board.java
         return squarePosition.toArray(position);
     }
 

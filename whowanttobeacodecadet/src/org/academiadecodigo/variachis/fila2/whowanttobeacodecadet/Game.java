@@ -109,6 +109,10 @@ public class Game {
     public void movePlayerToNext(Player player) {
         List<Integer[]> possiblePathsList = new LinkedList<>();
 
+<<<<<<< HEAD
+=======
+        //System.out.println(player.getName());
+>>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
         for (String path : player.getPossiblePaths()) {
             Integer[] position = board.transformKeyPosition(path);
             possiblePathsList.add(position);
@@ -157,6 +161,10 @@ public class Game {
         Square square = board.getSquareMap().get(getCurrentPlayer().getActualposition());
         this.category = square.getCategory();
         this.question = QuestionSelector.getRandomQuestions(category);
+<<<<<<< HEAD
+=======
+        //System.out.println(question.getStatement());
+>>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
         this.answersInPlay = questionsGfx.showQuestion(question, category);
     }
 
@@ -167,6 +175,13 @@ public class Game {
             getCurrentPlayer().setAnswered(true);
             getCurrentPlayer().setRightAnswer(true);
 
+<<<<<<< HEAD
+=======
+            //aparecer um texto a dizer acertou
+           // System.out.println(getCurrentPlayer().getName() + " You're right! You can play again. Press Space to Roll Dice!");
+            //player continua a jogar (libera o dado, escolhe caminho, etc)
+
+>>>>>>> a7852805e55be74f718b2cf3e9963948a397a068
             Square square = board.getSquareMap().get(getCurrentPlayer().getActualposition());
             if (square.isSpecial()) {
                 getCurrentPlayer().winCheese(square.getCategory());
