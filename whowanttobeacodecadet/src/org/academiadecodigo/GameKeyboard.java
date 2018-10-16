@@ -159,11 +159,10 @@ public class GameKeyboard implements KeyboardHandler {
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
                     printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(2000);
                     deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();
-                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
+                    printMessage(" Sifufu! You're Wrong! " +game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
                     return;
                 }
                 if (game.isGameWinner(game.getCurrentPlayer())) {
@@ -182,11 +181,10 @@ public class GameKeyboard implements KeyboardHandler {
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
                     printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(2000);
                     deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();
-                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
+                    printMessage(" Sifufu! You're Wrong! " + game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
                     return;
                 }
                 if (game.isGameWinner(game.getCurrentPlayer())) {
@@ -204,11 +202,10 @@ public class GameKeyboard implements KeyboardHandler {
                 game.answer(game.getQuestion());
                 if (!game.getCurrentPlayer().isRightAnswer()) {
                     printMessage(game.getCurrentPlayer().getName() + " Sifufu! You're Wrong!");
-                    sleep(2000);
                     deleteMessage();
                     game.nextPlayer();
                     player = game.getCurrentPlayer();
-                    printMessage(game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
+                    printMessage( " Sifufu! You're Wrong! " + game.getCurrentPlayer().getName() + " It's your turn. Press space to Roll dice!");
                     return;
                 }
 

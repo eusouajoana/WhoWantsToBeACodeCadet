@@ -113,7 +113,6 @@ public class Game {
     public void movePlayerToNext(Player player) {
         List<Integer[]> possiblePathsList = new LinkedList<>();
 
-        System.out.println(player.getName());
         for (String path : player.getPossiblePaths()) {
             Integer[] position = board.transformKeyPosition(path);
             possiblePathsList.add(position);
@@ -158,7 +157,6 @@ public class Game {
         Square square = board.getSquareMap().get(getCurrentPlayer().getActualposition());
         this.category = square.getCategory();
         this.question = QuestionSelector.getRandomQuestions(category);
-        System.out.println(question.getStatement());
         this.answersInPlay = questionsGfx.showQuestion(question, category);
     }
 
@@ -169,10 +167,6 @@ public class Game {
             getCurrentPlayer().setAnswered(true);
             getCurrentPlayer().setRightAnswer(true);
 
-            //aparecer um texto a dizer acertou
-            System.out.println(getCurrentPlayer().getName() + " You're right! You can play again. Press Space to Roll Dice!");
-            //player continua a jogar (libera o dado, escolhe caminho, etc)
-
             Square square = board.getSquareMap().get(getCurrentPlayer().getActualposition());
             if (square.isSpecial()) {
                 getCurrentPlayer().winCheese(square.getCategory());
@@ -180,7 +174,6 @@ public class Game {
 
 
                 }
-                //aparecer mensagem Ganhou um queijinho
             }
             questionsGfx.hideQuestion();
             return;
@@ -188,8 +181,6 @@ public class Game {
 
         getCurrentPlayer().setAnswered(false);
         getCurrentPlayer().setRightAnswer(false);
-        //aparece uma mensagem
-
         questionsGfx.hideQuestion();
     }
 

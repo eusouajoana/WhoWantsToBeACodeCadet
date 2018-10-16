@@ -95,16 +95,6 @@ public class Cheese implements Movable {
         }
     }
 
-   /* public void conversion(Integer[] chosenPosition) {
-        int previousRow = actualPosition[0];
-        int previousCol = actualPosition[1];
-        int row = chosenPosition[0];
-        int col = chosenPosition[1];
-
-        int y = (row - previousRow) * 54;
-        int x = (col - previousCol) * 54;
-    }
-    */
 
 
 }

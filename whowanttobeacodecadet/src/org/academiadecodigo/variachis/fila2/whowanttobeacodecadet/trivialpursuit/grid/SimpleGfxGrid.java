@@ -20,7 +20,7 @@ public class SimpleGfxGrid implements Grid{
         this.cols = cols;
         this.rows = rows;
         this.grid = new Rectangle(10, 10, (double)(cols * CELLSIZE), (double)(rows * CELLSIZE));
-        this.board = new Picture(10, 10,"/img/table3.png");
+        this.board = new Picture(10, 10,"resources/img/table3.png");
         this.init();
     }
 

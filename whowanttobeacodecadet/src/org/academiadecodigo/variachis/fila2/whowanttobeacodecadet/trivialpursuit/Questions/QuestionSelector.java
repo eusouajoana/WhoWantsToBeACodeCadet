@@ -76,9 +76,7 @@ public class QuestionSelector {
 
 
     public static Type randomCategory() {
-        // Enfiar todas as classes numa lista
-        //List<Type> values = new LinkedList<>(map.keySet());
-        //List<Type> values = new LinkedList<>();
+
         Type[] value = Type.values();
         int randomNumber = (int) (Math.random() * value.length);
 
