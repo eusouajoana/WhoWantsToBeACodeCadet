@@ -13,27 +13,22 @@ Programming concepts
 Rules:
 
 public void turnPlayer1() {
-
    if (question(category).getRightAnswer() == player.chooseAnswer()) {
-
        if (player.getPosition() == board.getSpecialPosition()){
            player.winCheese(category);
        }
-
+       
        if (player.getLittleCheeses().length == 4) {
            player.winGame();
            return;
        }
-
        turnPlayer1();
   return;
    }
-
    question(category).getRightAnswer() != player.chooseAnswer()) {
        turnPlayer2();
    }
 }
-
 
 
 
