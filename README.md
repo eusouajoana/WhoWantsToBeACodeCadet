@@ -1,6 +1,7 @@
 TRIVIAL PURSUIT <Academia de código_> Edition
+- "Made with only four weeks of coding study" -
 
-A new edition of the famous board game Trivial Pursuit. This time it about the <Academia de Código_>!
+A new edition of the famous board game Trivial Pursuit. This time it's about <Academia de Código_>!
 
 You have four amazing categories: 
 <Code Cadets>
