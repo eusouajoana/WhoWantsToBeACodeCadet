@@ -16,19 +16,25 @@ the awesome about <Academia de Código_>!
 
 ## Rules:
 ```java
+The usual Trivial Pursuit rules. 
+
 public void turnPlayer1() {
+
    if (question(category).getRightAnswer() == player.chooseAnswer()) {
+   
        if (player.getPosition() == board.getSpecialPosition()){
            player.winCheese(category);
        }
+       
        if (player.getLittleCheeses().length == 4) {
            player.winGame();
            return;
        }
+       
        turnPlayer1();
-  return;
    }
-   question(category).getRightAnswer() != player.chooseAnswer()) {
+   
+   if (question(category).getRightAnswer() != player.chooseAnswer()) {
        turnPlayer2();
    }
 }
